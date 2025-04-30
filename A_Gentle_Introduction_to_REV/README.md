@@ -4,6 +4,8 @@
 The purpose of this document is to provide an introduction to members of the CTF team, and others who are just interested in the topic, into Reverse Engineering (REV). This is a collaborative work in progress, written by the members of the MaaSec team that are specializing in this field. This document covers many topics that do not seem immediately related with REV but at a deeper level serve as the basis of the field (Numerical bases, computer architecture, forward engineering etc.). Because of this, aspects of this document will also prove very useful to people interested in Binary Exploitation (PWN). 
 
 If you find any missing/wrong/confusing information in this document, make sure to us know so that we can modify it. The contact information of the authors can be found in the "Contact Us" chapter.
+
+
 # Introduction
 
 Reverse Engineering (REV) is the art of taking a binary file, and through disassembly, decompilation and debugging, understanding the underlying logic. REV is most commonly used in the field of Malware Analysis, but anyone can reverse anything, as long as they have access to the bytes. 
@@ -48,7 +50,47 @@ This process of translating bases is best known as encoding, which is wholly dif
 
 # Compilation
 
-When source code is written by a programmer (or LLM), the computer is not able to parse the 
+When source code is written by a programmer (or LLM), the computer is not able to parse the source code in any meaningful way. This is because source code is no different than any other text document to the processor. The process of turning source code into executable code is called compilation but it really consists of multiple steps. 
+
+## Compilation (Again)
+
+The compilation step involves turning source code into assembly code. Assembly code is a lower-level language than most others, but is not the lowest-level that we can reach. 
+
+Turning source code into assembly code requires a Compiler, since doing it manually would be impossible for big applications. Each language has its own library of compilers, and interpreters (we will cover this later), so we will take the C language as an example. 
+
+The LLVM and CLANG are examples of programs that parse the source code in such a way that it allows for easier translation to assembly. Provided a C source code file, these programs look at code patterns, such as memory allocation or mathematical operations, and are able to logically create a sequence of assembly instructions that perform the given functions. Simple compilers can be written in a couple hundred lines of code, but the specifics are outside the scope of this document.
+
+During the process of compilation, the functionality of the program is preserved, but unique identifiers of variables and functions are lost. This makes reading assembly more challenging, since we can only use the instructions as reference. Assembly uses registers to store and operate upon data, so C code like:
+
+```c
+int money = 123;
+```
+
+is translated to:
+
+```asm
+MOV EAX, 123
+```
+
+Here, the identifier of the "money" variable is lost, and the value of it is stored in a memory register of the compiler's choice. 
+### Basic introduction to ISAs and Assembly
+
+There are many different flavors of assembly, such as x86-64 which is the standard in modern computers, ARM which has many benefits over x86-64 but still has not caught on in the mainstream, and MIPS which is not talked about much. These flavors are called Instruction Set Architectures (ISAs) in more formal language and list what operations are available to a system, how to use them, and what they do. The ISA of a computer is determined by the processor. Intel is the creator of the x86 ISA so most of their processors use it. Many of the Apple products used to use ARM CPUs, before they switched to producing their own processors.
+
+---
+**R/CISC Tangent - Optional Information**
+
+Another way to differentiate between ISAs is by looking at the complexity of their Instruction Sets. Reduced Instruction Set Computers (RISC) use fewer and simpler instructions, which makes them simpler and faster, but makes code more verbose, since every single step needs to be written by the developer or the compiler. Complex Instruction Set Computers (CISC) use more, and more complicated instructions. As a result, many functions can be represented in a single operation, making the code more readable, but increasing the complexity of the architecture and requiring more clock cycles to perform certain operations. 
+
+---
+
+Assembly instructions consist of operations and operands, and the amount of operands depends on the operation itself. The maximum amount of operands an instruction can have, in the x86-64 ISA, is 3, but most use 1 or 2.
+
+
+	MNEMONIC DESTINATION_OPERAND SOURCE_OPERAND OPTIONAL_OPERAND
+
+
+
 
 
 
@@ -68,3 +110,8 @@ When source code is written by a programmer (or LLM), the computer is not able t
 | Name                | Social-Media HyperLinks                                                                                                                   |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | Dimitrios Tsiplakis | [GitHub](https://github.com/johnnnathan) \| [LinkedIn](https://www.linkedin.com/in/dimitris-tsiplakis-4b0b15359) \| johnnnathan@proton.me |
+
+
+# Notes
+
+When talking about specifics of assembly, and the ISA is not specified assume that it is x86-64. In the first few chapters we specify it, but this is not the case in further chapters.
