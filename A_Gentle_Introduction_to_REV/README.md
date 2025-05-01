@@ -83,7 +83,7 @@ MOV EAX, 123
 Here, the identifier of the "money" variable is lost, and the value of it is stored in a memory register of the compiler's choice. 
 ### Basic introduction to ISAs and Assembly
 
-There are many different flavors of assembly, such as x86-64 which is the standard in modern computers, ARM which has many benefits over x86-64 but still has not caught on in the mainstream, and MIPS which is not talked about much. These flavors are called Instruction Set Architectures (ISAs) in more formal language and list what operations are available to a system, how to use them, and what they do. The ISA of a computer is determined by the processor. Intel is the creator of the x86 ISA so most of their processors use it. Many of the Apple products used to use ARM CPUs, before they switched to producing their own processors.
+There are many different flavors of assembly, such as x86-64 which is the standard in modern computers, ARM which has many benefits over x86-64 but still has not caught on in the mainstream, and MIPS which is not talked about much. These flavors are called Instruction Set Architectures (ISAs) in more formal language and list what operations are available to a system, how to use them, and what they do. The ISA of a computer is determined by the processor. Intel is the creator of the x86-64 ISA so most of their processors use it. Many of the Apple products used to use ARM CPUs, before they switched to producing their own processors.
 
 ---
 **R/CISC Tangent - Optional Information**
@@ -122,10 +122,52 @@ When reversing programs, static linking causes many problems to us reversers. Go
 
 Data and a program's code both need to be stored on the system to allow the processor to perform operations. Computers use a multi-layer system of caches and cold memory to improve performance, with the fastest memory type being CPU registers. 
 
+Registers exist inside the processor and are used for high-performance storage and operations. The size of the register depends, as previously mentioned, on the architecture of the CPU, with most modern registers holding 64 bits of data. 
+
+Different registers are used for different reasons and knowing the purpose of each one, is required, when analyzing a binary file. 
 
 
 
+## General Purpose Registers
 
+General Purpose Registers (GPRs) hold data that the function uses to complete its operations. When initializing a variable using a given value or operating upon values, general purpose registers hold those values. 
+
+They can hold both data and addresses, which means that they can serve as pointers to other locations in memory too. Since the processor does not differentiate between pointers and data, it is up to the developer and the reverser to decide which type it is.
+
+We can break GPRs (not exclusively, but mainly) into sub-registers for more fine-grained control over the data. The 64-bit RAX register for example, consists of the EAX register, which holds the lower 32-bits of the RAX register, the AX register, which holds the lower 16-bits and AL the 8-bits, whereas AH, the following 8-bits, meaning bits 8-15.
+
+## Pointer Registers
+
+The Instruction Pointer (RIP) is the main pointer register in the processor and it determines what instruction the processor will execute next. The processor looks at the pointer that it holds, and fetches, decodes and executes the instruction that it points to. These three steps make up the "Instruction Cycle" of the computer.
+
+We can also consider the Register Stack Pointer (RSP) and Register Base Pointer (RBP) types of pointer registers. RSP holds the address of the location of the top of the stack. When we PUSH or POP data onto the stack, we use the RSP register as a reference. A programmer can manually increase of decrease the value of RSP, compared to the base, which allocates and de-allocates memory on the stack, for future use.
+
+RBP holds the value of the base of the stack (Base / Frame pointer). We use the RBP register to allow for the creation of multiple sub-stacks (when calling functions for example), by changing the address that it points to. Additionally, we can consider the RBP register as a kind of anchor-point, with which we can point to any element on the stack at a given point, without the need to take shifts of RSP into consideration.
+
+---
+**NOTE**
+
+RSP and RBP are NOT Pointer Registers, they are GPRs, but it aids in understanding to consider them the same as the RIP register.
+
+---
+
+
+## Flags Register
+
+Sometimes the processor needs to send a signal to itself in the future, to prevent unwanted behaviors, or increase performance. For example, when adding two numbers that result in a number that is greater than the maximum value that the architecture is able to represent, the processor will activate the Carry Flag, that signifies that the resulting value is not going to be the same as the expected one.  
+
+There are 22 bits worth of flags in the RFLAGS register, but the main ones are:
+
+
+
+| Name             | Purpose                                         |
+| ---------------- | ----------------------------------------------- |
+| Carry Flag (CF)  | Signal Overflow                                 |
+| Parity Flag (PF) | Indicate that result of calculation is even     |
+| Zero Flag (ZF)   | Indicate that result of calculation is zero     |
+| Sign Flag (SF)   | Indicate that result of calculation is negative |
+
+Each of these flags occupy just a single bit in the RFLAGS register, and there are many more flags that have a unique task. More information regarding flags and registers can be found [here](https://wiki.osdev.org/CPU_Registers_x86-64).
 
 
 
