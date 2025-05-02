@@ -1,34 +1,3 @@
-
-- [[#Preface|Preface]]
-- [[#Introduction|Introduction]]
-- [[#Data and Numerical Bases/Systems|Data and Numerical Bases/Systems]]
-	- [[#Data and Numerical Bases/Systems#Translating from Base-X to Base-Y|Translating from Base-X to Base-Y]]
-	- [[#Data and Numerical Bases/Systems#Data Sizes|Data Sizes]]
-- [[#Compilation|Compilation]]
-	- [[#Compilation#Compilation (Again)|Compilation (Again)]]
-		- [[#Compilation (Again)#Basic introduction to ISAs and Assembly|Basic introduction to ISAs and Assembly]]
-	- [[#Compilation#Assembly|Assembly]]
-	- [[#Compilation#Linker|Linker]]
-- [[#Computer Memory|Computer Memory]]
-	- [[#Computer Memory#Registers|Registers]]
-		- [[#Registers#General Purpose Registers|General Purpose Registers]]
-		- [[#Registers#Pointer Registers|Pointer Registers]]
-		- [[#Registers#Flags Register|Flags Register]]
-	- [[#Computer Memory#Stack|Stack]]
-	- [[#Computer Memory#Heap|Heap]]
-- [[#Source Code|Source Code]]
-	- [[#Source Code#Variables|Variables]]
-		- [[#Variables#Primitives|Primitives]]
-		- [[#Variables#Structures|Structures]]
-		- [[#Variables#Pointers|Pointers]]
-		- [[#Variables#Strings|Strings]]
-	- [[#Source Code#Conditionals|Conditionals]]
-	- [[#Source Code#Loops|Loops]]
-	- [[#Source Code#Functions|Functions]]
-- [[#Contact Us|Contact Us]]
-- [[#Notes|Notes]]
-
-
 # Introduction
 
 ## Preface
