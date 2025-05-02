@@ -1,12 +1,44 @@
 
-# Preface
+- [[#Preface|Preface]]
+- [[#Introduction|Introduction]]
+- [[#Data and Numerical Bases/Systems|Data and Numerical Bases/Systems]]
+	- [[#Data and Numerical Bases/Systems#Translating from Base-X to Base-Y|Translating from Base-X to Base-Y]]
+	- [[#Data and Numerical Bases/Systems#Data Sizes|Data Sizes]]
+- [[#Compilation|Compilation]]
+	- [[#Compilation#Compilation (Again)|Compilation (Again)]]
+		- [[#Compilation (Again)#Basic introduction to ISAs and Assembly|Basic introduction to ISAs and Assembly]]
+	- [[#Compilation#Assembly|Assembly]]
+	- [[#Compilation#Linker|Linker]]
+- [[#Computer Memory|Computer Memory]]
+	- [[#Computer Memory#Registers|Registers]]
+		- [[#Registers#General Purpose Registers|General Purpose Registers]]
+		- [[#Registers#Pointer Registers|Pointer Registers]]
+		- [[#Registers#Flags Register|Flags Register]]
+	- [[#Computer Memory#Stack|Stack]]
+	- [[#Computer Memory#Heap|Heap]]
+- [[#Source Code|Source Code]]
+	- [[#Source Code#Variables|Variables]]
+		- [[#Variables#Primitives|Primitives]]
+		- [[#Variables#Structures|Structures]]
+		- [[#Variables#Pointers|Pointers]]
+		- [[#Variables#Strings|Strings]]
+	- [[#Source Code#Conditionals|Conditionals]]
+	- [[#Source Code#Loops|Loops]]
+	- [[#Source Code#Functions|Functions]]
+- [[#Contact Us|Contact Us]]
+- [[#Notes|Notes]]
+
+
+# Introduction
+
+## Preface
 
 The purpose of this document is to provide an introduction to members of the CTF team, and others who are just interested in the topic, into Reverse Engineering (REV). This is a collaborative work in progress, written by the members of the MaaSec team that are specializing in this field. This document covers many topics that do not seem immediately related with REV but at a deeper level serve as the basis of the field (Numerical bases, computer architecture, forward engineering etc.). Because of this, aspects of this document will also prove very useful to people interested in Binary Exploitation (PWN). 
 
 If you find any missing/wrong/confusing information in this document, make sure to us know so that we can modify it. The contact information of the authors can be found in the "Contact Us" chapter.
 
 
-# Introduction
+## Introduction
 
 Reverse Engineering (REV) is the art of taking a binary file, and through disassembly, decompilation and debugging, understanding the underlying logic. REV is most commonly used in the field of Malware Analysis, but anyone can reverse anything, as long as they have access to the bytes. 
 
@@ -14,7 +46,11 @@ The REV category of challenges in CTF competitions is usually the most difficult
 
 With enough effort anything can be understood or get cracked, and some of the most well-known methods will be covered in the following chapters. 
 
-# Data and Numerical Bases/Systems
+
+
+# Basic Computing Concepts
+
+## Data and Numerical Bases/Systems
 
 All programs are made up of data. It's up to us to give the data meaning and turn it into information. The data that makes up computer programs is in its purest form in the binary format. 
 
@@ -32,7 +68,7 @@ Base 16 (HEXadecimal) ( |{0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F}| = 16 ) is a golden s
 There are an infinite amount of numerical systems, as long as you are able to represent an infinite amount of symbols. One of the best known big bases is Base-64 but Base-128, Base-256 and Base-518 are also theoretically possible.
 
 Base-128 (AKA ASCII) is technically one of the most used bases, since all keyboards with the English alphabet depend on it, but using it for computations and mathematics is not ideal. 
-## Translating from Base-X to Base-Y
+### Translating from Base-X to Base-Y
 
 Since numerical bases are just different ways to represent numbers, we must also be able to turn numbers from an arbitrary base into numbers of another arbitrary base. There is a simple formula that is able to do this:
 
@@ -47,7 +83,7 @@ No data is lost or gained when using a certain system over another. The only thi
 
 This process of translating bases is best known as encoding, which is wholly different from encryption, where the original form of the data is only recoverable using a secret.
 
-## Data Sizes
+### Data Sizes
 
 Since the size of primitive data types, such as int, char and float are system dependent, we use different terms to represent the size of a type. In the binary numerical system a bit is the smallest possible unit, with which we can represent a number (0 or 1).
 
@@ -56,11 +92,11 @@ A collection of 8 bits is called a byte and has a maximum value of 255 (0-255, m
 A half-word is a data type of 16 bits (2 bytes, max 65_535), single words (WORDS) of 32 bits (4 bytes, max 4_294_967_295) and Double Words (DWORDS) 64-bits (8 bytes, max 18_446_744_073_709_551_616). 
 
 These terms are usually used when talking about the architecture of a computer. Older computers used 32-bit registers which meant that the maximum amount of bits that a register could hold was a WORD. The address space is also dependent on the architecture, since a register holds the Instruction Pointer.
-# Compilation
+## Compilation
 
 When source code is written by a programmer (or LLM), the computer is not able to parse the source code in any meaningful way. This is because source code is no different than any other text document to the processor. The process of turning source code into executable code is called compilation but it really consists of multiple steps. 
 
-## Compilation (Again)
+### Compilation (Again)
 
 The compilation step involves turning source code into assembly code. Assembly code is a lower-level language than most others, but is not the lowest-level that we can reach. 
 
@@ -81,7 +117,7 @@ MOV EAX, 123
 ```
 
 Here, the identifier of the "money" variable is lost, and the value of it is stored in a memory register of the compiler's choice. 
-### Basic introduction to ISAs and Assembly
+#### Basic introduction to ISAs and Assembly
 
 There are many different flavors of assembly, such as x86-64 which is the standard in modern computers, ARM which has many benefits over x86-64 but still has not caught on in the mainstream, and MIPS which is not talked about much. These flavors are called Instruction Set Architectures (ISAs) in more formal language and list what operations are available to a system, how to use them, and what they do. The ISA of a computer is determined by the processor. Intel is the creator of the x86-64 ISA so most of their processors use it. Many of the Apple products used to use ARM CPUs, before they switched to producing their own processors.
 
@@ -99,13 +135,13 @@ Assembly instructions consist of operations and operands, and the amount of oper
 
 
 
-## Assembly
+### Assembly
 
 The Assembly stage of compilation is the second stage, and it uses as input the assembly code generated by the compiler to produce object code. Object code is a lower level version of the assembly code in binary format, which will be used to produce the executable.
 
 In this stage the assembly instructions are turned into their binary representations.
 
-## Linker
+### Linker
 
 The Linker stage uses the object file that was generated during the Assembly stage and combines it with other object files and libraries to produce the final executable file. The final product will be a .exe file or an ELF file and can be used by the operating system to perform the functionalities determined in the source code.
 
@@ -118,12 +154,12 @@ Static linking includes the files themselves into the executable. As a result fi
 When reversing programs, static linking causes many problems to us reversers. Golang compilers for example, statically compile programs by default, meaning that analysis and debugging is much slower and much more arduous. 
 
 
-# Computer Memory
+## Computer Memory
 
 Data and a program's code both need to be stored on the system to allow the processor to perform operations. Computers use a multi-layer system of caches and cold memory to improve performance, with the fastest memory type being CPU registers. 
 
 
-## Registers 
+### Registers 
 
 Registers exist inside the processor and are used for high-performance storage and operations. The size of the register depends, as previously mentioned, on the architecture of the CPU, with most modern registers holding 64 bits of data. 
 
@@ -131,7 +167,7 @@ Different registers are used for different reasons and knowing the purpose of ea
 
 
 
-### General Purpose Registers
+#### General Purpose Registers
 
 General Purpose Registers (GPRs) hold data that the function uses to complete its operations. When initializing a variable using a given value or operating upon values, general purpose registers hold those values. 
 
@@ -142,7 +178,7 @@ We can break GPRs (not exclusively, but mainly) into sub-registers for more fine
 ![[Pasted image 20250502155214.png]]
 *List of GPRs, their sub-registers and their main purpose, image by* [osdev.org](https://wiki.osdev.org/CPU_Registers_x86-64)
 
-### Pointer Registers
+#### Pointer Registers
 
 The Instruction Pointer (RIP) is the main pointer register in the processor and it determines what instruction the processor will execute next. The processor looks at the pointer that it holds, and fetches, decodes and executes the instruction that it points to. These three steps make up the "Instruction Cycle" of the computer.
 
@@ -158,7 +194,7 @@ RSP and RBP are NOT Pointer Registers, they are GPRs, but it aids in understandi
 ---
 
 
-### Flags Register
+#### Flags Register
 
 Sometimes the processor needs to send a signal to itself in the future, to prevent unwanted behaviors, or increase performance. For example, when adding two numbers that result in a number that is greater than the maximum value that the architecture is able to represent, the processor will activate the Carry Flag, that signifies that the resulting value is not going to be the same as the expected one.  
 
@@ -177,7 +213,7 @@ Each of these flags occupy just a single bit in the RFLAGS register, and there a
 
 
 
-## Stack
+### Stack
 
 The stack is a structure inside Random Access Memory (RAM) that is used by the program to store local variables for a limited amount of time. As previously mentioned, there can be multiple sub-stacks that are described by RBP (Base) and RSP (Top). 
 
@@ -202,22 +238,22 @@ MOV RAX, [RSP + 32] ; Load 1 into RAX, offset is 4 x 8 = 32
 ---
 
 
-## Heap
+### Heap
 
 Heap memory is also a memory structure inside RAM, but it's implementation and usage differs slightly, when compared to the stack. Heap memory does not allow for PUSHing and POPing, but only direct indexing. When adding data to the heap, the computer needs to first check if there is enough space to hold the data. If that is not the case, memory is allocated, which is an expensive operation. Access and write times are the same between the stack and the heap, but the allocation time overhead makes it less appealing in cases where high-performance is important.
 
 
-# Source Code
+## Source Code
 
 Being proficient in forward engineering is required for reverse engineering. Many of the standard programming patterns have an equivalent disassembled version, and this aids us in the process of understanding a binary file. 
 
-## Variables
+### Variables
 
 To store values in memory, we use variables. The processor can not differentiate between data types, since it sees everything as numbers (bits), so types are mainly used for programmers to be better able to understand and debug programs. 
 
 Variables can either be primitive or user defined (structures).
 
-### Primitives
+#### Primitives
 
 Primitive types just describe how much data can fit inside the variable. 
 
@@ -261,7 +297,7 @@ char g = 64;
 | <<     | Bitwise Left Shift  | 0b0101 << 1 = 0b1010                          |
 
 
-### Structures
+#### Structures
 
 It is often advantageous to be able to group multiple variables together into one unit. In the C language we are able to define our own custom structures that contain an arbitrary amount of arbitrary data types. 
 
@@ -274,7 +310,7 @@ struct person {
 ```
 
 
-### Pointers
+#### Pointers
 
 Pointers seem to be the bane of most programmers, but in reality they are just variables that hold the location of a location in memory. This can be used for standalone variables, but is the basis of arrays, and as we will see, Strings. 
 
@@ -301,10 +337,10 @@ int main(int argc, char *argv[])
 }
 
 ```
-### Strings
+#### Strings
 
 Strings are a unique type of variable, since they are closer to lists than any primitive type. A pointer object points to the first character of the string, which is usually stored on the heap, and the computer keeps moving through it until it finds a string terminating byte. String terminating bytes (NULL bytes - 0x00) consist of only 0s, and signal to the computer that there are going to be no more characters after it.
-## Conditionals 
+### Conditionals 
 
 When we want the program to perform an operation under only certain conditions we can use a conditional to allow or disallow the execution of the nested lines.
 
@@ -343,7 +379,7 @@ else {
 | !      | Logical NOT       | !X       |
 
 
-## Loops 
+### Loops 
 
 When we want to perform an operation multiple times, we can use a loop, instead of duplicating the code. The two main types of loops are For loops and While loops, but as we will see in further chapters, they are both While loops.
 
@@ -364,7 +400,7 @@ while (i < 10){
 
 
 
-## Functions
+### Functions
 
 Functions allow us to define a set of instructions that will be performed, whenever it is called. We can pass parameters to functions, through function arguments, but it is not required. We can also retrieve the result of the function, but yet again, that is not required. 
 
@@ -398,6 +434,7 @@ void sayHello(){
 
 
 
+# Reversing
 
 
 
@@ -407,9 +444,9 @@ void sayHello(){
 
 
 
+# Appendix
 
-
-# Contact Us
+## Contact Us
 
 
 | Name                | Social-Media HyperLinks                                                                                                                   |
@@ -417,7 +454,7 @@ void sayHello(){
 | Dimitrios Tsiplakis | [GitHub](https://github.com/johnnnathan) \| [LinkedIn](https://www.linkedin.com/in/dimitris-tsiplakis-4b0b15359) \| johnnnathan@proton.me |
 
 
-# Notes
+## Notes
 
 When talking about specifics of assembly, and the ISA is not specified assume that it is x86-64. In the first few chapters we specify it, but this is not the case in further chapters.
 
