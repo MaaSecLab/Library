@@ -139,6 +139,9 @@ They can hold both data and addresses, which means that they can serve as pointe
 
 We can break GPRs (not exclusively, but mainly) into sub-registers for more fine-grained control over the data. The 64-bit RAX register for example, consists of the EAX register, which holds the lower 32-bits of the RAX register, the AX register, which holds the lower 16-bits and AL the 8-bits, whereas AH, the following 8-bits, meaning bits 8-15.
 
+![[Pasted image 20250502155214.png]]
+*List of GPRs, their sub-registers and their main purpose, image by* [osdev.org](https://wiki.osdev.org/CPU_Registers_x86-64)
+
 ### Pointer Registers
 
 The Instruction Pointer (RIP) is the main pointer register in the processor and it determines what instruction the processor will execute next. The processor looks at the pointer that it holds, and fetches, decodes and executes the instruction that it points to. These three steps make up the "Instruction Cycle" of the computer.
@@ -241,6 +244,23 @@ char g = 64;
 ```
 
 
+| Symbol | Operation           | Example                                       |
+| ------ | ------------------- | --------------------------------------------- |
+| +      | Addition            | 1 + 3                                         |
+| -      | Subtraction         | 1 - 3                                         |
+| /      | Division            | 6 / 2                                         |
+| *      | Multiplication      | 7 * 7                                         |
+| %      | Modulo              | 5 % 3 = 2                                     |
+| =      | Assignment          | int x = 5 + 9                                 |
+| ==     | Check Equality      | int x = 5;<br>int y = 5;<br>if (x == 5) ...   |
+| &      | Bitwise AND         | 0b01 & 0b11 = 0b01                            |
+| \|     | Bitwise OR          | 0b10 \| 0b01 = 0b11                           |
+| ^      | Bitwise XOR         | 0b11 \| 0b10 = 0b01                           |
+| ~      | Bitwise NOT         | int x = 0b010;<br>int y = ~x;<br>// y = 0b101 |
+| >>     | Bitwise Right Shift | 0b0101 >> 1 = 0b0010                          |
+| <<     | Bitwise Left Shift  | 0b0101 << 1 = 0b1010                          |
+
+
 ### Structures
 
 It is often advantageous to be able to group multiple variables together into one unit. In the C language we are able to define our own custom structures that contain an arbitrary amount of arbitrary data types. 
@@ -254,6 +274,36 @@ struct person {
 ```
 
 
+### Pointers
+
+Pointers seem to be the bane of most programmers, but in reality they are just variables that hold the location of a location in memory. This can be used for standalone variables, but is the basis of arrays, and as we will see, Strings. 
+
+```c
+#include <stddef.h>
+#include <stdio.h>
+int main(int argc, char *argv[])
+{
+  int x[4] = { 1,2,3,4 };
+  int *pointer = x;
+
+  size_t length = sizeof(x) / sizeof(x[0]);
+  int sum = 0;
+  for (int i = 0; i < length; i++){
+    sum += *pointer;
+    pointer += 1;
+  }
+
+  printf("%d", sum);
+
+  
+
+  return 0;
+}
+
+```
+### Strings
+
+Strings are a unique type of variable, since they are closer to lists than any primitive type. A pointer object points to the first character of the string, which is usually stored on the heap, and the computer keeps moving through it until it finds a string terminating byte. String terminating bytes (NULL bytes - 0x00) consist of only 0s, and signal to the computer that there are going to be no more characters after it.
 ## Conditionals 
 
 When we want the program to perform an operation under only certain conditions we can use a conditional to allow or disallow the execution of the nested lines.
@@ -284,6 +334,13 @@ else {
 	printf("Get your money up");
 }
 ```
+
+
+| Symbol | Logical Operation | Example  |
+| ------ | ----------------- | -------- |
+| &&     | Logical AND       | X && Y   |
+| \|\|   | Logical OR        | X \|\| Y |
+| !      | Logical NOT       | !X       |
 
 
 ## Loops 
