@@ -1,4 +1,6 @@
+
 # Introduction
+
 
 ## Preface
 
@@ -64,6 +66,9 @@ These terms are usually used when talking about the architecture of a computer. 
 ## Compilation
 
 When source code is written by a programmer (or LLM), the computer is not able to parse the source code in any meaningful way. This is because source code is no different than any other text document to the processor. The process of turning source code into executable code is called compilation but it really consists of multiple steps. 
+
+![[Pasted image 20250502164302.png]]
+*The steps of the compilation process, image from [medium](https://medium.com/@3681/steps-of-compilation-5c02935a3904).*
 
 ### Compilation (Again)
 
@@ -180,6 +185,13 @@ There are 22 bits worth of flags in the RFLAGS register, but the main ones are:
 
 Each of these flags occupy just a single bit in the RFLAGS register, and there are many more flags that have a unique task. More information regarding flags and registers can be found [here](https://wiki.osdev.org/CPU_Registers_x86-64).
 
+#### Register Calling Conventions
+
+When writing assembly, or compiling source code, it is useful to have a few guidelines that everyone follows. The most important family of guidelines that exists is the Calling Convention set of rules, when calling or getting called by a function. 
+
+Just like in source code, we sometimes want to pass values to a callee function. The GPRs allow for 6 values to be passed, and the rest need to be put on the stack, as will be analysed in the Stack sub-chapter. The registers follow the RDI, RSI, RDX, RCX, R8 and R9 order, meaning that RDI is the first argument that is being passed to the function and R9 the sixth. 
+
+There are also conventions regarding the way that the value of a register should be saved, but that is not required knowledge for the time being.
 
 
 ### Stack
@@ -206,10 +218,15 @@ MOV RAX, [RSP + 32] ; Load 1 into RAX, offset is 4 x 8 = 32
 ```
 ---
 
+![[Pasted image 20250502164506.png]]
+*Stack from a system with 32-bit architecture, image from [virginia.edu](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html).*
 
 ### Heap
 
 Heap memory is also a memory structure inside RAM, but it's implementation and usage differs slightly, when compared to the stack. Heap memory does not allow for PUSHing and POPing, but only direct indexing. When adding data to the heap, the computer needs to first check if there is enough space to hold the data. If that is not the case, memory is allocated, which is an expensive operation. Access and write times are the same between the stack and the heap, but the allocation time overhead makes it less appealing in cases where high-performance is important.
+
+![[Pasted image 20250502181828.png]]
+*Memory Layout of Programs, image from [stackoverflow](https://stackoverflow.com/questions/73420465/how-the-operating-system-manages-the-stack-and-heap-growing-and-shrinking).*
 
 
 ## Source Code
@@ -405,12 +422,63 @@ void sayHello(){
 
 # Reversing
 
+## Tools
+
+Due to the niche nature of Reverse Engineering, not many tools exist out there that are aimed at simplifying the work-process. The tools are also incredibly complex, so only big organizations (such as the NSA...) are able to produce them. To reverse engineer a program we just need a way to statically and dynamically analyse them.
+
+### Static Analysis
+
+Static analysis is the process of taking an executable file and analyzing its contents without executing the file itself. The result is the functional side of the program (assembly instructions) alongside any possible hard coded data values that were stored alongside them (mainly strings). 
+
+If you are using Linux on your system, you will likely have access to the "objdump" tool. Using:
+
+```bash
+objdump -d [PATH_TO_EXECUTABLE]
+```
+
+will print the disassembled view of the chosen binary. Don't worry if you don't understand it just yet, we will get to that point.
+
+Objdump is nice to work with for small projects (handful of simple functions), but gives us no interactability with the file itself. Programs like [Ghidra](https://ghidra-sre.org/) address this issue, by providing a whole suite of tools for reverse engineers. 
+
+The program itself is intended for Malware Analysis, but a binary is a binary.
+
+One of the key features that Ghidra allows us to use, is the Decompiler. Instead of looking at assembly instructions manually, the decompilation software parses the disassembly and creates high-level pseudocode with equivalent functionality. We are then able to read that pseudocode to get a better understanding of the underlying logic of the program. 
+
+---
+**NOTE - Decompilation**
+
+Decompilation is not a perfect process, and a lot of information is lost during it. It is nice to work with, but investing into understanding assembly, will prove beneficial in the long run.
+
+---
+
+**NOTE - Choice of Disassembler/Decompiler**
+
+There are a few other Disassemblers/Decompilers, namely [IDA](https://hex-rays.com/ida-free),  [Binja](https://binary.ninja/) and [Radare](https://rada.re/n/). Which one you choose is up to you, since they are all quite equal in terms of quality. Ghidra has one of the nicest decompilers, but IDA has one of the nicest disassemblers. Binary Ninja (Binja) is both a dynamic (we talk about this in the next chapter) and static analysis tool with both being of relatively high quality. People tend to fight over tribalism, instead of the actual quality of the products themselves, so use them all and decide for yourself. 
+
+Personally I use the Ghidra and Binja stack on both Linux and Windows, and have had no troubles. There are a few complementary tools that I do use on Linux, that I will talk about during the Dynamic Analysis chapter.
+
+---
 
 
+### Dynamic Analysis
+
+Instead of just relying on the phenotype of the code during analysis, we can see what the state of the CPU and memory is like during execution. By using a debugger we can stop the execution of the program at user-defined spots and step through the assembly instruction by instruction to get a better grasp of how data is operated upon. 
+
+All of the tools referenced in the Static Analysis chapter also have the capacity to debug or attach debuggers, but using standalone debuggers is usually the better option. On windows [x64dbg](https://x64dbg.com/) is the standard, but Binja and [ollydbg(outdated)](https://www.ollydbg.de/) can also be used. Since x64dbg is Windows specific, we have to use another debugger on Linux. [GDB](https://www.sourceware.org/gdb/) can do everything x64dbg  can, but with a simpler UI. Using the [PWNDBG](https://github.com/pwndbg/pwndbg) extension for GDB further enhances the capabilities of the debugger, making it the ideal tool for Reversing and PWNing applications.
+
+---
+**TANGENT - When to statically, and when to dynamically analyse? **
+
+There is no real guide-line on how to decide. In my personal experience statically analyzing at first and then dynamically has granted me fine results. There are people who swear by only using static analysis, and others the same but for dynamic. It is up to the individual reverser to decide when and if they use either option. 
+
+For beginners I would suggest following my approach and then tailoring it to create their own workflow.
+
+---
 
 
+### Scripting
 
-
+Scripting is the forgotten about child of the reverse engineering world. There is no good way to teach scripting, since each use-case is unique. Using scripts to emulate the behavior of the program, or to filter data are two common ones, but there is an infinite amount of possibilities. Platforms like Ghidra allow for embedded scripting, using their custom API, but any scripting language can be used. Python is the most used language for scripting, but Golang and Lua are also good choices. The python [PWNTOOLS](https://github.com/Gallopsled/pwntools)library implements a lot of features that are impossible to live without once you get used to them. It is useful for both REV and PWN challenges, and is something that everyone should get, even surface level, experience with.
 
 
 # Appendix
@@ -418,9 +486,18 @@ void sayHello(){
 ## Contact Us
 
 
-| Name                | Social-Media HyperLinks                                                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Dimitrios Tsiplakis | [GitHub](https://github.com/johnnnathan) \| [LinkedIn](https://www.linkedin.com/in/dimitris-tsiplakis-4b0b15359) \| johnnnathan@proton.me |
+|                  | Name                        | Social-Media HyperLinks                                                                                                                       |
+| ---------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![[goatpfp.png]] | <br>Dimitrios <br>Tsiplakis | <br>[GitHub](https://github.com/johnnnathan) \| [LinkedIn](https://www.linkedin.com/in/dimitris-tsiplakis-4b0b15359) \| johnnnathan@proton.me |
+
+## Additional Tangents
+
+---
+**Using AI to Reverse Programs**
+
+In your reverse engineering journey you will definitely come across a function that you cannot understand, not matter the hours that you spend on it. I myself, and many others, have asked LLMs for help in such cases. LLMs are, in my opinion, detrimental to your development as a reverser, not because LLMs complete the job instead of you, but because they are not assembly models, they are language models. The quality of the responses of the models are based on the quality of the content that the developers used while training it. Pure assembly is amongst the least used programming languages, and so, the possible amount of training data is limited, compared to a language like python. It is highly likely that a model will give you confusing or false results when querying it, so do your best to not depend on them. 
+
+---
 
 
 ## Notes
@@ -428,3 +505,5 @@ void sayHello(){
 When talking about specifics of assembly, and the ISA is not specified assume that it is x86-64. In the first few chapters we specify it, but this is not the case in further chapters.
 
 Most source code snippets will be in written in C. It's what most apps use and the language I like the most, fight me.
+
+Any provided binaries will be ELFs. In the future this might change. Certain referenced programs might also be Linux exclusive.
