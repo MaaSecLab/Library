@@ -208,18 +208,136 @@ Heap memory is also a memory structure inside RAM, but it's implementation and u
 
 Being proficient in forward engineering is required for reverse engineering. Many of the standard programming patterns have an equivalent disassembled version, and this aids us in the process of understanding a binary file. 
 
-## Conditionals
+## Variables
+
+To store values in memory, we use variables. The processor can not differentiate between data types, since it sees everything as numbers (bits), so types are mainly used for programmers to be better able to understand and debug programs. 
+
+Variables can either be primitive or user defined (structures).
+
+### Primitives
+
+Primitive types just describe how much data can fit inside the variable. 
 
 
 
+| Name   | Size (bytes) | Notes                  |
+| ------ | ------------ | ---------------------- |
+| short  | 2            |                        |
+| int    | 4            |                        |
+| long   | 8            |                        |
+| float  | 4            | Floating point numbers |
+| double | 8            | Floating point numbers |
+| char   | 1            |                        |
+
+```c
+short a = 1;
+int b = 0x50; // Assign a value in hexadecimal format to the variable, does not change the functionality in any way
+long c = 0b100000; // We can also use the binary format, once again, it does not change the functionality of it.
+float d = 3.13;
+double e = 222222.222222;
+char f = 'f'; // Characters are just numbers, so this is the same as assigning it the value of 102
+char g = 64;
+
+```
+
+
+### Structures
+
+It is often advantageous to be able to group multiple variables together into one unit. In the C language we are able to define our own custom structures that contain an arbitrary amount of arbitrary data types. 
+
+```c
+struct person {
+  int age;
+  float height;
+  char* name;
+};
+```
+
+
+## Conditionals 
+
+When we want the program to perform an operation under only certain conditions we can use a conditional to allow or disallow the execution of the nested lines.
+
+
+```c
+int c = 15;
+
+if (c % 5 == 0){
+	printf("Number is divisible by 5");
+}
+```
+
+```c
+
+int age = 21;
+int money = 10;
+int item_price = 7;
+
+if ( age >= 18 && money >= item_price ){
+	printf("You can buy this item");
+	money -= item_price;
+} 
+else if ( age < 18 ){
+	printf("You are too young");
+}
+else {
+	printf("Get your money up");
+}
+```
+
+
+## Loops 
+
+When we want to perform an operation multiple times, we can use a loop, instead of duplicating the code. The two main types of loops are For loops and While loops, but as we will see in further chapters, they are both While loops.
+
+```c
+int sum;
+for (int i = 0; i < 10; i++){
+	sum += i;
+}
+```
+
+```c
+int i, sum;
+while (i < 10){
+	sum += 1;
+	i += 1; // or i++;
+}
+```
 
 
 
+## Functions
+
+Functions allow us to define a set of instructions that will be performed, whenever it is called. We can pass parameters to functions, through function arguments, but it is not required. We can also retrieve the result of the function, but yet again, that is not required. 
 
 
+```c
+/*
+In the signature of the function:
+	long determines the return type, could be any defined data type, including user-defined
+	calculateSumSquared is the name of the function
+	int a is the data type of the first argument and its name
+	int b is the data type of the second argument and its name
+*/
+long calculateSumSquared(int a, int b){
+	long result = (a + b)*(a + b);
+	return result;
+}
 
 
+int main(){
+	long sumS = calculateSumSquare(1,2); // sum = 9 
+}
+```
 
+```c
+
+void sayHello(){
+	printf("Hello");
+	// No return required, since void
+}
+```
 
 
 
@@ -245,3 +363,5 @@ Being proficient in forward engineering is required for reverse engineering. Man
 # Notes
 
 When talking about specifics of assembly, and the ISA is not specified assume that it is x86-64. In the first few chapters we specify it, but this is not the case in further chapters.
+
+Most source code snippets will be in written in C. It's what most apps use and the language I like the most, fight me.
