@@ -478,7 +478,41 @@ For beginners I would suggest following my approach and then tailoring it to cre
 
 ### Scripting
 
-Scripting is the forgotten about child of the reverse engineering world. There is no good way to teach scripting, since each use-case is unique. Using scripts to emulate the behavior of the program, or to filter data are two common ones, but there is an infinite amount of possibilities. Platforms like Ghidra allow for embedded scripting, using their custom API, but any scripting language can be used. Python is the most used language for scripting, but Golang and Lua are also good choices. The python [PWNTOOLS](https://github.com/Gallopsled/pwntools)library implements a lot of features that are impossible to live without once you get used to them. It is useful for both REV and PWN challenges, and is something that everyone should get, even surface level, experience with.
+Scripting is the forgotten about child of the reverse engineering world. There is no good way to teach scripting, since each use-case is unique. Using scripts to emulate the behavior of the program, or to filter data are two common ones, but there is an infinite amount of possibilities. Platforms like Ghidra allow for embedded scripting, using their custom API, but any scripting language can be used. Python is the most used language for scripting, but Golang and Lua are also good choices. The python [PWNTOOLS](https://github.com/Gallopsled/pwntools)library implements a lot of features that are impossible to live without once you get used to them. It is useful for both REV and PWN challenges, and is something that everyone should get, even surface level, experience in.
+
+
+## x86-64 Assembly Basics
+
+
+Just as source code is comprised of loops, conditionals, functions and basic mathematical operation, so assembly is comprised of conditionals, functions, data movement and basic mathematical operations. 
+
+---
+**NOTE - Why are there no loops in assembly? - IMPORTANT**
+
+As we mentioned during the explanation of loops, a for loop is just a while loop with nicer syntax. A while loop on the other hand is just a conditional that is evaluated each time we reach a certain line in the code. Assembly languages have a unique feature where we are able to jump to a specific code address, and that means that we can create a makeshift loop by jumping backwards into the code.
+
+```asm
+for_loop:
+    cmp rax, 10                 ; Compare count with 10
+
+    jg end_loop                 ; If count > 10, exit loop
+
+    inc rax                     ; Increment count
+    jmp for_loop                ; Repeat the loop
+
+end_loop:
+	...
+```
+
+---
+
+### Data Movement 
+
+
+
+### Mathematical Operations
+
+
 
 
 # Appendix
