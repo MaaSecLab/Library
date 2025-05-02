@@ -122,13 +122,16 @@ When reversing programs, static linking causes many problems to us reversers. Go
 
 Data and a program's code both need to be stored on the system to allow the processor to perform operations. Computers use a multi-layer system of caches and cold memory to improve performance, with the fastest memory type being CPU registers. 
 
+
+## Registers 
+
 Registers exist inside the processor and are used for high-performance storage and operations. The size of the register depends, as previously mentioned, on the architecture of the CPU, with most modern registers holding 64 bits of data. 
 
 Different registers are used for different reasons and knowing the purpose of each one, is required, when analyzing a binary file. 
 
 
 
-## General Purpose Registers
+### General Purpose Registers
 
 General Purpose Registers (GPRs) hold data that the function uses to complete its operations. When initializing a variable using a given value or operating upon values, general purpose registers hold those values. 
 
@@ -136,7 +139,7 @@ They can hold both data and addresses, which means that they can serve as pointe
 
 We can break GPRs (not exclusively, but mainly) into sub-registers for more fine-grained control over the data. The 64-bit RAX register for example, consists of the EAX register, which holds the lower 32-bits of the RAX register, the AX register, which holds the lower 16-bits and AL the 8-bits, whereas AH, the following 8-bits, meaning bits 8-15.
 
-## Pointer Registers
+### Pointer Registers
 
 The Instruction Pointer (RIP) is the main pointer register in the processor and it determines what instruction the processor will execute next. The processor looks at the pointer that it holds, and fetches, decodes and executes the instruction that it points to. These three steps make up the "Instruction Cycle" of the computer.
 
@@ -152,7 +155,7 @@ RSP and RBP are NOT Pointer Registers, they are GPRs, but it aids in understandi
 ---
 
 
-## Flags Register
+### Flags Register
 
 Sometimes the processor needs to send a signal to itself in the future, to prevent unwanted behaviors, or increase performance. For example, when adding two numbers that result in a number that is greater than the maximum value that the architecture is able to represent, the processor will activate the Carry Flag, that signifies that the resulting value is not going to be the same as the expected one.  
 
@@ -168,6 +171,64 @@ There are 22 bits worth of flags in the RFLAGS register, but the main ones are:
 | Sign Flag (SF)   | Indicate that result of calculation is negative |
 
 Each of these flags occupy just a single bit in the RFLAGS register, and there are many more flags that have a unique task. More information regarding flags and registers can be found [here](https://wiki.osdev.org/CPU_Registers_x86-64).
+
+
+
+## Stack
+
+The stack is a structure inside Random Access Memory (RAM) that is used by the program to store local variables for a limited amount of time. As previously mentioned, there can be multiple sub-stacks that are described by RBP (Base) and RSP (Top). 
+
+Imagining the stack as a stack data-structure is not entirely correct. PUSHing (adding) and POPing (removing) elements from the stack is one of the most used features of it. Besides that, we are also able to specify locations on it directly. An addressable location on the stack is able to store as many bits as the architecture of the processor. x86-64 is a 64-bit architecture, so each location on the stack is able to hold 64-bits worth of data. This means that it is ideal for static size, and small data structures, with dynamic size, and larger data structure moving to the heap.
+
+The stack is used when the amount of data that we need to store is more than the registers are able to provide. This process is called stack-spilling and introduces minor slow-downs, since registers are faster than RAM, but is quite often unavoidable.
+
+---
+**Example of direct indexing on the stack**
+
+Consider this scenario, you push a value onto the stack and after it push 4 more values, moving the RSP away from it. When you want to access the value that you pushed onto the stack, you have to pop off each of the 4 following element to reach it. This will of course overwrite those elements, and maintaining them would be a big hassle. Instead of POPing 4 times, we can directly specify the location manually.
+
+```asm
+PUSH 1
+PUSH 2
+PUSH 3
+PUSH 4
+PUSH 5
+
+MOV RAX, [RSP + 32] ; Load 1 into RAX, offset is 4 x 8 = 32
+```
+---
+
+
+## Heap
+
+Heap memory is also a memory structure inside RAM, but it's implementation and usage differs slightly, when compared to the stack. Heap memory does not allow for PUSHing and POPing, but only direct indexing. When adding data to the heap, the computer needs to first check if there is enough space to hold the data. If that is not the case, memory is allocated, which is an expensive operation. Access and write times are the same between the stack and the heap, but the allocation time overhead makes it less appealing in cases where high-performance is important.
+
+
+# Source Code
+
+Being proficient in forward engineering is required for reverse engineering. Many of the standard programming patterns have an equivalent disassembled version, and this aids us in the process of understanding a binary file. 
+
+## Conditionals
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
