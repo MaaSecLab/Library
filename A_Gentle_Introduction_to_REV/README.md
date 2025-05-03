@@ -36,9 +36,9 @@ Base 16 (HEXadecimal) ( |{0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F}| = 16 ) is a golden s
 	Ex. 0x00 = 0 / 0x05 = 5 / 0x0F = 15/ 0x10 = 16 / 0xAB = 171 / 0xFF = 255
 
 
-There are an infinite amount of numerical systems, as long as you are able to represent an infinite amount of symbols. One of the best known big bases is Base-64 but Base-128, Base-256 and Base-518 are also theoretically possible.
+There are an infinite amount of numerical systems, as long as you are able to represent an infinite amount of symbols. One of the best known big bases is Base-64 but Base-128, Base-256 and Base-518 are also possible.
 
-Base-128 (AKA ASCII) is technically one of the most used bases, since all keyboards with the English alphabet depend on it, but using it for computations and mathematics is not ideal. 
+Base-256 (AKA ASCII) is technically one of the most used bases, since all keyboards with the English alphabet depend on it, but using it for computations and mathematics is not ideal. 
 ### Translating from Base-X to Base-Y
 
 Since numerical bases are just different ways to represent numbers, we must also be able to turn numbers from an arbitrary base into numbers of another arbitrary base. There is a simple formula that is able to do this:
@@ -191,8 +191,48 @@ When writing assembly, or compiling source code, it is useful to have a few guid
 
 Just like in source code, we sometimes want to pass values to a callee function. The GPRs allow for 6 values to be passed, and the rest need to be put on the stack, as will be analysed in the Stack sub-chapter. The registers follow the RDI, RSI, RDX, RCX, R8 and R9 order, meaning that RDI is the first argument that is being passed to the function and R9 the sixth. 
 
-There are also conventions regarding the way that the value of a register should be saved, but that is not required knowledge for the time being.
+When giving control back to the caller, at the end of a function, the return value is stored in the RAX register. So, if we 
 
+There are also conventions regarding the way that the value of a register should be saved onto the stack, but that is not required knowledge for the time being.
+
+
+```asm
+<equation>:
+   endbr64 
+   push   %rbp
+   mov    %rsp,%rbp
+   mov    %edi,-0x14(%rbp) 
+   mov    %esi,-0x18(%rbp) 
+   mov    -0x14(%rbp),%eax ; Move a into the EAX register
+   imul   %eax,%eax        ; Multiply a by itself to get the square
+   mov    %eax,%edx
+   mov    -0x18(%rbp),%eax ; Retrieve the value of b
+   add    %edx,%eax        ; Add b to EAX, which now contains a^2
+   mov    %eax,-0x4(%rbp)
+   mov    -0x4(%rbp),%eax  ; Store the resulting value in EAX, so that the caller (main) is able to use it
+   pop    %rbp
+   ret    
+
+
+<main>:
+  endbr64 
+  push   %rbp
+  mov    %rsp,%rbp
+  sub    $0x20,%rsp
+  mov    %edi,-0x14(%rbp)
+  mov    %rsi,-0x20(%rbp)
+  movl   $0x33,-0xc(%rbp) ; Here, a gets initialized
+  movl   $0xc,-0x8(%rbp)  ; Here, b gets initialized
+  mov    -0x8(%rbp),%edx  ; b is stored inside the EDX register
+  mov    -0xc(%rbp),%eax  ; a is stored inside the EAX register
+  mov    %edx,%esi        ; b is moved into ESI, second argument register
+  mov    %eax,%edi        ; a is moved into EDI, which is the first argument 
+  call   1129 <equation>  ; Call the equation function
+  mov    %eax,-0x4(%rbp)  ; Store the result of the function on the stack
+  mov    $0x0,%eax
+  leave  
+  ret    
+```
 
 ### Stack
 
@@ -202,6 +242,16 @@ Imagining the stack as a stack data-structure is not entirely correct. PUSHing (
 
 The stack is used when the amount of data that we need to store is more than the registers are able to provide. This process is called stack-spilling and introduces minor slow-downs, since registers are faster than RAM, but is quite often unavoidable.
 
+
+```
+0x7fffffffda90: 0xffffdac0      0x00007fff      0x5555517c      0x00005555
+0x7fffffffdaa0: 0xffffdbd8      0x00007fff      0x00000064      0x00000001
+0x7fffffffdab0: 0x00001000      !0x00000033     !0x0000000c     0x00005555
+0x7fffffffdac0: 0x00000001      0x00000000      0xf7d9cd90      0x00007fff
+0x7fffffffdad0: 0x00000000      0x00000000      0x5555514c      0x00005555
+
+We can see that 0x33 is stored in dab4 and 0xc in dab8, which are locations on the stack.
+```
 ---
 **Example of direct indexing on the stack**
 
@@ -475,7 +525,13 @@ For beginners I would suggest following my approach and then tailoring it to cre
 
 ---
 
+## Memory Scanning
 
+A memory scanner is a feature that usually exists in the aforementioned tools in some barebones way. Dedicated memory scanners give us a lot more freedom over the process of looking at and searching for values in the memory. The best known memory scanner is [CheatEngine](https://www.cheatengine.org/) which is heavily used by the video-game modding community. Memory scanners can also be used for non-video game programs but are not necessary.
+
+When we know that a certain numerical value exists inside the program, but do not know the exact location of it, we can skim through the entire memory and find the address where it is stored. CheatEngine also has a disassembler built-in and that means that we can find both the exact locations in memory, where the value is stored, but also see how it is used by the program.
+
+Certain challenges require CheatEngine to be solved, but those cases are few.
 ### Scripting
 
 Scripting is the forgotten about child of the reverse engineering world. There is no good way to teach scripting, since each use-case is unique. Using scripts to emulate the behavior of the program, or to filter data are two common ones, but there is an infinite amount of possibilities. Platforms like Ghidra allow for embedded scripting, using their custom API, but any scripting language can be used. Python is the most used language for scripting, but Golang and Lua are also good choices. The python [PWNTOOLS](https://github.com/Gallopsled/pwntools)library implements a lot of features that are impossible to live without once you get used to them. It is useful for both REV and PWN challenges, and is something that everyone should get, even surface level, experience in.
@@ -506,16 +562,63 @@ end_loop:
 
 ---
 
+## Comparisons and Jumps
+
+In Assembly languages we need to explicitly write the instructions that compare two values. Instead of writing 
+
+```c
+int x = 5;
+int y = 1;
+if (x == y)...
+```
+
+we need to write 
+
+```asm
+MOV 0x5, EAX
+MOV 0x1, EBX
+CMP EAX, EBX
+JNE [address]
+```
+
+Comparisons can also be used before conditional movement instructions, as will be discussed shortly. When using the CMP operation the result of the subtraction between the first and second values is remembered, by triggering the correct flags. There are many different types of results, which allow for a lot of control over the flow of the program.
+
+![[Pasted image 20250503162839.png]]
+*Types of Jumps that can be performed, depending on the result of the CMP call, Image from [Brown University](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf).*
+
+
+We can also use the TEST operation, which uses a Bitwise AND, instead of a subtraction.
 ### Data Movement 
 
+To move values into registers, between registers or from/to a register to/from RAM we need to use a MOV operation. 
+
+```asm
+MOV SOURCE, DESTINATION
+```
+
+There are multiple types of movement instructions and they all do slightly different things. Instead of performing manual comparisons and then using jumps for branching, we can use the 'c' prefix with the appropriate suffix to achieve the same behavior in one line, if the following instruction would be a move.
+
+![[Pasted image 20250503161949.png]]
+*Types of conditional movement operations, Image from [Brown University](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf).*
 
 
 ### Mathematical Operations
 
+Most mathematical operations that are present in the c language, can also be performed in assembly languages, quite succinctly. For example, when adding two values, instead of using the '+' symbol, we use the "ADD" operation, with the two values are operands.
 
 
+![[Pasted image 20250503165102.png]]
+*Some common mathematical operations in x86-64, Image from [Brown University](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf).*
 
-# Appendix
+## Functions
+
+The basic structure of functions, is quite simple. 
+
+The processor changes the value stored inside the RIP register to the first line of the called function. The return address of the caller function is PUSHed on to the stack and the function is executed. At the end a RET call is made to return the control to the caller function, after POPing the return address from the stack.
+
+We are also able to create child processes and threads that execute functions in parallel with the main and other child processes/threads. This will be covered in future chapters, since parallel processing is quite common in larger applications.
+
+# Appendix A - Community
 
 ## Contact Us
 
@@ -541,3 +644,9 @@ When talking about specifics of assembly, and the ISA is not specified assume th
 Most source code snippets will be in written in C. It's what most apps use and the language I like the most, fight me.
 
 Any provided binaries will be ELFs. In the future this might change. Certain referenced programs might also be Linux exclusive.
+
+
+# Appendix B - Exercises
+
+# Appendix C - Solutions
+

@@ -1,0 +1,37 @@
+<equation>:
+   endbr64 
+   push   %rbp
+   mov    %rsp,%rbp
+   mov    %edi,-0x14(%rbp) ; Put b on the stack
+   mov    %esi,-0x18(%rbp) ; Put a on the stack
+   mov    -0x14(%rbp),%eax ; Move a into the EAX register
+   imul   %eax,%eax        ; Multiply a by itself to get the square
+   mov    %eax,%edx
+   mov    -0x18(%rbp),%eax ; Retrieve the value of b
+   add    %edx,%eax        ; Add b to EAX, which now contains a^2
+   mov    %eax,-0x4(%rbp)
+   mov    -0x4(%rbp),%eax  ; Store the resulting value in EAX, so that the caller (main) is able to use it
+   pop    %rbp
+   ret    
+
+
+<main>:
+  endbr64 
+  push   %rbp
+  mov    %rsp,%rbp
+  sub    $0x20,%rsp
+  mov    %edi,-0x14(%rbp)
+  mov    %rsi,-0x20(%rbp)
+  movl   $0x33,-0xc(%rbp) ; This is the line where the a variable gets initialized
+  movl   $0xc,-0x8(%rbp)  ; This is the line where the b variable gets initialized
+  mov    -0x8(%rbp),%edx  ; b is stored inside the EDX register
+  mov    -0xc(%rbp),%eax  ; a is stored inside the EAX register
+  mov    %edx,%esi        ; b is moved into the ESI register, which is the register holding the second argument
+  mov    %eax,%edi        ; a is moved into EDI, which is the first argument register
+  call   1129 <equation>  ; Call the equation function
+  mov    %eax,-0x4(%rbp)  ; Store the result of the function on the stack
+  mov    $0x0,%eax
+  leave  
+  ret    
+
+
