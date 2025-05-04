@@ -1,0 +1,1483 @@
+<!doctype html>
+<html>
+    <head>
+        <title>README</title>
+        <meta charset='utf-8'/>
+        <style>
+ .ͼ1.cm-focused {outline: 1px dotted #212121;}
+.ͼ1 {position: relative !important; box-sizing: border-box; display: flex !important; flex-direction: column;}
+.ͼ1 .cm-scroller {display: flex !important; align-items: flex-start !important; font-family: monospace; line-height: 1.4; height: 100%; overflow-x: auto; position: relative; z-index: 0;}
+.ͼ1 .cm-content[contenteditable=true] {-webkit-user-modify: read-write-plaintext-only;}
+.ͼ1 .cm-content {margin: 0; flex-grow: 2; flex-shrink: 0; display: block; white-space: pre; word-wrap: normal; box-sizing: border-box; min-height: 100%; padding: 4px 0; outline: none;}
+.ͼ1 .cm-lineWrapping {white-space: pre-wrap; white-space: break-spaces; word-break: break-word; overflow-wrap: anywhere; flex-shrink: 1;}
+.ͼ2 .cm-content {caret-color: black;}
+.ͼ3 .cm-content {caret-color: white;}
+.ͼ1 .cm-line {display: block; padding: 0 2px 0 6px;}
+.ͼ1 .cm-layer > * {position: absolute;}
+.ͼ1 .cm-layer {position: absolute; left: 0; top: 0; contain: size style;}
+.ͼ2 .cm-selectionBackground {background: #d9d9d9;}
+.ͼ3 .cm-selectionBackground {background: #222;}
+.ͼ2.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {background: #d7d4f0;}
+.ͼ3.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {background: #233;}
+.ͼ1 .cm-cursorLayer {pointer-events: none;}
+.ͼ1.cm-focused > .cm-scroller > .cm-cursorLayer {animation: steps(1) cm-blink 1.2s infinite;}
+@keyframes cm-blink {50% {opacity: 0;}}
+@keyframes cm-blink2 {50% {opacity: 0;}}
+.ͼ1 .cm-cursor, .ͼ1 .cm-dropCursor {border-left: 1.2px solid black; margin-left: -0.6px; pointer-events: none;}
+.ͼ1 .cm-cursor {display: none;}
+.ͼ3 .cm-cursor {border-left-color: #444;}
+.ͼ1 .cm-dropCursor {position: absolute;}
+.ͼ1.cm-focused > .cm-scroller > .cm-cursorLayer .cm-cursor {display: block;}
+.ͼ1 .cm-iso {unicode-bidi: isolate;}
+.ͼ1 .cm-announced {position: fixed; top: -10000px;}
+@media print {.ͼ1 .cm-announced {display: none;}}
+.ͼ2 .cm-activeLine {background-color: #cceeff44;}
+.ͼ3 .cm-activeLine {background-color: #99eeff33;}
+.ͼ2 .cm-specialChar {color: red;}
+.ͼ3 .cm-specialChar {color: #f78;}
+.ͼ1 .cm-gutters {flex-shrink: 0; display: flex; height: 100%; box-sizing: border-box; inset-inline-start: 0; z-index: 200;}
+.ͼ2 .cm-gutters {background-color: #f5f5f5; color: #6c6c6c; border-right: 1px solid #ddd;}
+.ͼ3 .cm-gutters {background-color: #333338; color: #ccc;}
+.ͼ1 .cm-gutter {display: flex !important; flex-direction: column; flex-shrink: 0; box-sizing: border-box; min-height: 100%; overflow: hidden;}
+.ͼ1 .cm-gutterElement {box-sizing: border-box;}
+.ͼ1 .cm-lineNumbers .cm-gutterElement {padding: 0 3px 0 5px; min-width: 20px; text-align: right; white-space: nowrap;}
+.ͼ2 .cm-activeLineGutter {background-color: #e2f2ff;}
+.ͼ3 .cm-activeLineGutter {background-color: #222227;}
+.ͼ1 .cm-panels {box-sizing: border-box; position: sticky; left: 0; right: 0;}
+.ͼ2 .cm-panels {background-color: #f5f5f5; color: black;}
+.ͼ2 .cm-panels-top {border-bottom: 1px solid #ddd;}
+.ͼ2 .cm-panels-bottom {border-top: 1px solid #ddd;}
+.ͼ3 .cm-panels {background-color: #333338; color: white;}
+.ͼ1 .cm-tab {display: inline-block; overflow: hidden; vertical-align: bottom;}
+.ͼ1 .cm-widgetBuffer {vertical-align: text-top; height: 1em; width: 0; display: inline;}
+.ͼ1 .cm-placeholder {color: #888; display: inline-block; vertical-align: top;}
+.ͼ1 .cm-highlightSpace:before {content: attr(data-display); position: absolute; pointer-events: none; color: #888;}
+.ͼ1 .cm-highlightTab {background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="20"><path stroke="%23888" stroke-width="1" fill="none" d="M1 10H196L190 5M190 15L196 10M197 4L197 16"/></svg>'); background-size: auto 100%; background-position: right 90%; background-repeat: no-repeat;}
+.ͼ1 .cm-trailingSpace {background-color: #ff332255;}
+.ͼ1 .cm-button {vertical-align: middle; color: inherit; font-size: 70%; padding: .2em 1em; border-radius: 1px;}
+.ͼ2 .cm-button:active {background-image: linear-gradient(#b4b4b4, #d0d3d6);}
+.ͼ2 .cm-button {background-image: linear-gradient(#eff1f5, #d9d9df); border: 1px solid #888;}
+.ͼ3 .cm-button:active {background-image: linear-gradient(#111, #333);}
+.ͼ3 .cm-button {background-image: linear-gradient(#393939, #111); border: 1px solid #888;}
+.ͼ1 .cm-textfield {vertical-align: middle; color: inherit; font-size: 70%; border: 1px solid silver; padding: .2em .5em;}
+.ͼ2 .cm-textfield {background-color: white;}
+.ͼ3 .cm-textfield {border: 1px solid #555; background-color: inherit;}
+.ͼ1 .cm-foldPlaceholder {background-color: #eee; border: 1px solid #ddd; color: #888; border-radius: .2em; margin: 0 1px; padding: 0 1px; cursor: pointer;}
+.ͼ1 .cm-foldGutter span {padding: 0 1px; cursor: pointer;}
+ 
+.pandoc-plugin-error {
+    color: red;
+}
+  .CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+ .CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+ .CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+ 
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+_::-webkit-full-page-media, _:future, :root mjx-container {
+  will-change: opacity;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-math {
+  display: inline-block;
+  text-align: left;
+  line-height: 0;
+  text-indent: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  font-size-adjust: none;
+  letter-spacing: normal;
+  border-collapse: collapse;
+  word-wrap: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  direction: ltr;
+  padding: 1px 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="CHTML"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="CHTML"][display="true"] mjx-math {
+  padding: 0;
+}
+
+mjx-container[jax="CHTML"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="CHTML"][justify="right"] {
+  text-align: right;
+}
+
+mjx-msub {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-mi {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-c {
+  display: inline-block;
+}
+
+mjx-utext {
+  display: inline-block;
+  padding: .75em 0 .2em 0;
+}
+
+mjx-TeXAtom {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-mo {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-stretchy-h {
+  display: inline-table;
+  width: 100%;
+}
+
+mjx-stretchy-h > * {
+  display: table-cell;
+  width: 0;
+}
+
+mjx-stretchy-h > * > mjx-c {
+  display: inline-block;
+  transform: scalex(1.0000001);
+}
+
+mjx-stretchy-h > * > mjx-c::before {
+  display: inline-block;
+  width: initial;
+}
+
+mjx-stretchy-h > mjx-ext {
+  /* IE */ overflow: hidden;
+  /* others */ overflow: clip visible;
+  width: 100%;
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c::before {
+  transform: scalex(500);
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c {
+  width: 0;
+}
+
+mjx-stretchy-h > mjx-beg > mjx-c {
+  margin-right: -.1em;
+}
+
+mjx-stretchy-h > mjx-end > mjx-c {
+  margin-left: -.1em;
+}
+
+mjx-stretchy-v {
+  display: inline-block;
+}
+
+mjx-stretchy-v > * {
+  display: block;
+}
+
+mjx-stretchy-v > mjx-beg {
+  height: 0;
+}
+
+mjx-stretchy-v > mjx-end > mjx-c {
+  display: block;
+}
+
+mjx-stretchy-v > * > mjx-c {
+  transform: scaley(1.0000001);
+  transform-origin: left center;
+  overflow: hidden;
+}
+
+mjx-stretchy-v > mjx-ext {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  /* IE */ overflow: hidden;
+  /* others */ overflow: visible clip;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c::before {
+  width: initial;
+  box-sizing: border-box;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c {
+  transform: scaleY(500) translateY(.075em);
+  overflow: visible;
+}
+
+mjx-mark {
+  display: inline-block;
+  height: 0px;
+}
+
+mjx-munderover {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-munderover:not([limits="false"]) {
+  padding-top: .1em;
+}
+
+mjx-munderover:not([limits="false"]) > * {
+  display: block;
+}
+
+mjx-msubsup {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-script {
+  display: inline-block;
+  padding-right: .05em;
+  padding-left: .033em;
+}
+
+mjx-script > mjx-spacer {
+  display: block;
+}
+
+mjx-mn {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-msup {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("app://obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+
+mjx-c.mjx-c1D441.TEX-I::before {
+  padding: 0.683em 0.888em 0 0;
+  content: "N";
+}
+
+mjx-c.mjx-c1D435.TEX-I::before {
+  padding: 0.683em 0.759em 0 0;
+  content: "B";
+}
+
+mjx-c.mjx-c3D::before {
+  padding: 0.583em 0.778em 0.082em 0;
+  content: "=";
+}
+
+mjx-c.mjx-c1D45B.TEX-I::before {
+  padding: 0.442em 0.6em 0.011em 0;
+  content: "n";
+}
+
+mjx-c.mjx-c2211.TEX-S2::before {
+  padding: 0.95em 1.444em 0.45em 0;
+  content: "\2211";
+}
+
+mjx-c.mjx-c1D456.TEX-I::before {
+  padding: 0.661em 0.345em 0.011em 0;
+  content: "i";
+}
+
+mjx-c.mjx-c30::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "0";
+}
+
+mjx-c.mjx-c1D451.TEX-I::before {
+  padding: 0.694em 0.52em 0.01em 0;
+  content: "d";
+}
+
+mjx-c.mjx-c22C5::before {
+  padding: 0.31em 0.278em 0 0;
+  content: "\22C5";
+}
+
+mjx-c.mjx-c1D434.TEX-I::before {
+  padding: 0.716em 0.75em 0 0;
+  content: "A";
+}
+ 
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("http://cdn.mathjax.org/mathjax/latest/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Bold.woff") format("woff");
+}undefined
+</style>
+    </head>
+    <body>
+<h1 data-heading="Introduction" dir="auto">Introduction</h1>
+<h2 data-heading="Preface" dir="auto">Preface</h2>
+<p dir="auto">The purpose of this document is to provide an introduction to members of the CTF team, and others who are just interested in the topic, into Reverse Engineering (REV). This is a collaborative work in progress, written by the members of the MaaSec team that are specializing in this field. This document covers many topics that do not seem immediately related with REV but at a deeper level serve as the basis of the field (Numerical bases, computer architecture, forward engineering etc.). Because of this, aspects of this document will also prove very useful to people interested in Binary Exploitation (PWN). </p>
+<p dir="auto">If you find any missing/wrong/confusing information in this document, make sure to us know so that we can modify it. The contact information of the authors can be found in the "Contact Us" chapter.</p>
+<h2 data-heading="Introduction" dir="auto">Introduction</h2>
+<p dir="auto">Reverse Engineering (REV) is the art of taking a binary file, and through disassembly, decompilation and debugging, understanding the underlying logic. REV is most commonly used in the field of Malware Analysis, but anyone can reverse anything, as long as they have access to the bytes. </p>
+<p dir="auto">The REV category of challenges in CTF competitions is usually the most difficult one. This is because obfuscation techniques have been heavily researched ever since the commercialization of computers, since their profits depend on their software being closed-source. You don't need to look for long to find an example, piracy for example is one of the main things that Music, Film and Video Game companies worry about when releasing their products. The producers don't have enough knowledge to implement good anti-piracy measures themselves, so they hire specialized companies, such as Denuvo, to do the work for them, and since their financial success depends on the effectiveness of their solutions, they have to make sure that nobody can bypass them. </p>
+<p dir="auto">With enough effort anything can be understood or get cracked, and some of the most well-known methods will be covered in the following chapters. </p>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+‎ 
+# Basic Computing Concepts
+<h2 data-heading="Data and Numerical Bases/Systems" dir="auto">Data and Numerical Bases/Systems</h2>
+<p dir="auto">All programs are made up of data. It's up to us to give the data meaning and turn it into information. The data that makes up computer programs is in its purest form in the binary format. </p>
+<p dir="auto">Binary as you probably already know is the simplest numerical base, consisting of just 2 digits, 0 (zero) and 1 (one). </p>
+<p dir="auto">The amount of possible elements that are able to make up a valid number inside an arbitrary system , determines the base of that specific numerical system. The binary system has a base of 2 (two) since |{0,1}| = 2.</p>
+<p dir="auto">Binary data is impossible for humans to read at a large scale, so other systems are usually used. Base 10 (Decimal) (|{0,1,2,3,4,5,6,7,8,9}| = 10) has been the cornerstone of mathematics ever since the beginning. It's not really <a data-tooltip-position="top" aria-label="https://youtu.be/rDDaEVcwIJM" rel="noopener" class="external-link" href="https://youtu.be/rDDaEVcwIJM" target="_blank">the best base</a> but we have used it extensively, since it maps unto the amount of fingers that the median person has. </p>
+<p dir="auto">Base 16 (HEXadecimal) ( |{0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F}| = 16 ) is a golden standard in the sphere of computing, since two HEX characters are able to represent an entire byte.</p>
+<pre dir="auto"><code>Ex. 0x00 = 0 / 0x05 = 5 / 0x0F = 15/ 0x10 = 16 / 0xAB = 171 / 0xFF = 255
+</code><button class="copy-code-button">Copy</button></pre>
+<p dir="auto">There are an infinite amount of numerical systems, as long as you are able to represent an infinite amount of symbols. One of the best known big bases is Base-64 but Base-128, Base-256 and Base-518 are also possible.</p>
+<p dir="auto">Base-256 (AKA ASCII) is technically one of the most used bases, since all keyboards with the English alphabet depend on it, but using it for computations and mathematics is not ideal. </p>
+<h3 data-heading="Translating from Base-X to Base-Y" dir="auto">Translating from Base-X to Base-Y</h3>
+<p dir="auto">Since numerical bases are just different ways to represent numbers, we must also be able to turn numbers from an arbitrary base into numbers of another arbitrary base. There is a simple formula that is able to do this:</p>
+<p dir="auto"><span class="math math-block is-loaded"><mjx-container class="MathJax" jax="CHTML" display="true"><mjx-math display="true" class="MJX-TEX" style="margin-left: 0px; margin-right: 0px;"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D441 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.085em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D435 TEX-I"></mjx-c></mjx-mi></mjx-texatom></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-munderover space="4"><mjx-over style="padding-bottom: 0.192em; padding-left: 0.51em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi></mjx-texatom></mjx-over><mjx-box><mjx-munder><mjx-row><mjx-base><mjx-mo class="mjx-lop"><mjx-c class="mjx-c2211 TEX-S2"></mjx-c></mjx-mo></mjx-base></mjx-row><mjx-row><mjx-under style="padding-top: 0.167em; padding-left: 0.148em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n"><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-texatom></mjx-under></mjx-row></mjx-munder></mjx-box></mjx-munderover><mjx-msub space="2"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D451 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub><mjx-mo class="mjx-n" space="3"><mjx-c class="mjx-c22C5"></mjx-c></mjx-mo><mjx-msup space="3"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D434 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: 0.413em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msup></mjx-math></mjx-container></span></p>
+<ul dir="auto">
+<li dir="auto"><span class="math math-inline is-loaded"><mjx-container class="MathJax" jax="CHTML"><mjx-math class="MJX-TEX"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D441 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em; margin-left: -0.085em;"><mjx-texatom size="s" texclass="ORD"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D435 TEX-I"></mjx-c></mjx-mi></mjx-texatom></mjx-script></mjx-msub></mjx-math></mjx-container></span>: Number in new base  </li>
+<li dir="auto"><strong><span class="math math-inline is-loaded"><mjx-container class="MathJax" jax="CHTML"><mjx-math class="MJX-TEX"><mjx-msub><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D451 TEX-I"></mjx-c></mjx-mi><mjx-script style="vertical-align: -0.15em;"><mjx-mi class="mjx-i" size="s"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi></mjx-script></mjx-msub></mjx-math></mjx-container></span></strong>: Digit at position ( i ) (starting from the rightmost digit, ( i = 0 ))  </li>
+<li dir="auto">A: The original base  </li>
+<li dir="auto">n: Highest position index (leftmost digit)</li>
+</ul>
+<p dir="auto">No data is lost or gained when using a certain system over another. The only thing that changes is the amount of symbols that the reader must know to interpret the data and the amount of indexes required to form the number.</p>
+<p dir="auto">This process of translating bases is best known as encoding, which is wholly different from encryption, where the original form of the data is only recoverable using a secret.</p>
+<h3 data-heading="Data Sizes" dir="auto">Data Sizes</h3>
+<p dir="auto">Since the size of primitive data types, such as int, char and float are system dependent, we use different terms to represent the size of a type. In the binary numerical system a bit is the smallest possible unit, with which we can represent a number (0 or 1).</p>
+<p dir="auto">A collection of 8 bits is called a byte and has a maximum value of 255 (0-255, meaning 256 possible numbers). Byte notation is usually preferred over bit notation, since in larger data types/structures it is difficult for a human to interpret.</p>
+<p dir="auto">A half-word is a data type of 16 bits (2 bytes, max 65_535), single words (WORDS) of 32 bits (4 bytes, max 4_294_967_295) and Double Words (DWORDS) 64-bits (8 bytes, max 18_446_744_073_709_551_616). </p>
+<p dir="auto">These terms are usually used when talking about the architecture of a computer. Older computers used 32-bit registers which meant that the maximum amount of bits that a register could hold was a WORD. The address space is also dependent on the architecture, since a register holds the Instruction Pointer.</p>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+<p dir="auto">‎ </p>
+<h2 data-heading="Compilation" dir="auto">Compilation</h2>
+<p dir="auto">When source code is written by a programmer (or LLM), the computer is not able to parse the source code in any meaningful way. This is because source code is no different than any other text document to the processor. The process of turning source code into executable code is called compilation but it really consists of multiple steps. </p>
+<p dir="auto"><img alt="Pasted image 20250502164302.png" src="Pasted image 20250502164302.png" class="internal-embed"><br>
+<em>The steps of the compilation process, image from <a data-tooltip-position="top" aria-label="https://medium.com/@3681/steps-of-compilation-5c02935a3904" rel="noopener" class="external-link" href="https://medium.com/@3681/steps-of-compilation-5c02935a3904" target="_blank">medium</a>.</em></p>
+<h3 data-heading="Compilation (Again)" dir="auto">Compilation (Again)</h3>
+<p dir="auto">The compilation step involves turning source code into assembly code. Assembly code is a lower-level language than most others, but is not the lowest-level that we can reach. </p>
+<p dir="auto">Turning source code into assembly code requires a Compiler, since doing it manually would be impossible for big applications. Each language has its own library of compilers, and interpreters (we will cover this later), so we will take the C language as an example. </p>
+<p dir="auto">The LLVM and CLANG are examples of programs that parse the source code in such a way that it allows for easier translation to assembly. Provided a C source code file, these programs look at code patterns, such as memory allocation or mathematical operations, and are able to logically create a sequence of assembly instructions that perform the given functions. Simple compilers can be written in a couple hundred lines of code, but the specifics are outside the scope of this document.</p>
+<p dir="auto">During the process of compilation, the functionality of the program is preserved, but unique identifiers of variables and functions are lost. This makes reading assembly more challenging, since we can only use the instructions as reference. Assembly uses registers to store and operate upon data, so C code like:</p>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token keyword">int</span> money <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<p dir="auto">is translated to:</p>
+<pre dir="auto" class="language-asm" tabindex="0"><code class="language-asm is-loaded">MOV EAX, 123
+</code><button class="copy-code-button">Copy</button></pre>
+<p dir="auto">Here, the identifier of the "money" variable is lost, and the value of it is stored in a memory register of the compiler's choice. </p>
+<h4 data-heading="Basic introduction to ISAs and Assembly" dir="auto">Basic introduction to ISAs and Assembly</h4>
+<p dir="auto">There are many different flavors of assembly, such as x86-64 which is the standard in modern computers, ARM which has many benefits over x86-64 but still has not caught on in the mainstream, and MIPS which is not talked about much. These flavors are called Instruction Set Architectures (ISAs) in more formal language and list what operations are available to a system, how to use them, and what they do. The ISA of a computer is determined by the processor. Intel is the creator of the x86-64 ISA so most of their processors use it. Many of the Apple products used to use ARM CPUs, before they switched to producing their own processors.</p>
+<hr dir="auto">
+<p dir="auto"><strong>R/CISC Tangent - Optional Information</strong></p>
+<p dir="auto">Another way to differentiate between ISAs is by looking at the complexity of their Instruction Sets. Reduced Instruction Set Computers (RISC) use fewer and simpler instructions, which makes them simpler and faster, but makes code more verbose, since every single step needs to be written by the developer or the compiler. Complex Instruction Set Computers (CISC) use more, and more complicated instructions. As a result, many functions can be represented in a single operation, making the code more readable, but increasing the complexity of the architecture and requiring more clock cycles to perform certain operations. </p>
+<hr dir="auto">
+<p dir="auto">Assembly instructions consist of operations and operands, and the amount of operands depends on the operation itself. The maximum amount of operands an instruction can have, in the x86-64 ISA, is 3, but most use 1 or 2.</p>
+<pre dir="auto"><code>MNEMONIC DESTINATION_OPERAND SOURCE_OPERAND OPTIONAL_OPERAND
+</code><button class="copy-code-button">Copy</button></pre>
+<h3 data-heading="Assembly" dir="auto">Assembly</h3>
+<p dir="auto">The Assembly stage of compilation is the second stage, and it uses as input the assembly code generated by the compiler to produce object code. Object code is a lower level version of the assembly code in binary format, which will be used to produce the executable.</p>
+<p dir="auto">In this stage the assembly instructions are turned into their binary representations.</p>
+<h3 data-heading="Linker" dir="auto">Linker</h3>
+<p dir="auto">The Linker stage uses the object file that was generated during the Assembly stage and combines it with other object files and libraries to produce the final executable file. The final product will be a .exe file or an ELF file and can be used by the operating system to perform the functionalities determined in the source code.</p>
+<p dir="auto">Linking can either be dynamic or static. This determines the amount of external resources that are included alongside the application's source code. </p>
+<p dir="auto">Dynamic linking includes references to included files that have to be present on the system during runtime. The burden of having the files present is on the user, so it requires more effort on their end, while keeping file sizes low.</p>
+<p dir="auto">Static linking includes the files themselves into the executable. As a result file sizes are greater but allow users to immediately execute the program, without a need for additional work.</p>
+<p dir="auto">When reversing programs, static linking causes many problems to us reversers. Golang compilers for example, statically compile programs by default, meaning that analysis and debugging is much slower and much more arduous. </p>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+<p dir="auto">‎ </p>
+<h2 data-heading="Computer Memory" dir="auto">Computer Memory</h2>
+<p dir="auto">Data and a program's code both need to be stored on the system to allow the processor to perform operations. Computers use a multi-layer system of caches and cold memory to improve performance, with the fastest memory type being CPU registers. </p>
+<h3 data-heading="Registers" dir="auto">Registers</h3>
+<p dir="auto">Registers exist inside the processor and are used for high-performance storage and operations. The size of the register depends, as previously mentioned, on the architecture of the CPU, with most modern registers holding 64 bits of data. </p>
+<p dir="auto">Different registers are used for different reasons and knowing the purpose of each one, is required, when analyzing a binary file. </p>
+<h4 data-heading="General Purpose Registers" dir="auto">General Purpose Registers</h4>
+<p dir="auto">General Purpose Registers (GPRs) hold data that the function uses to complete its operations. When initializing a variable using a given value or operating upon values, general purpose registers hold those values. </p>
+<p dir="auto">They can hold both data and addresses, which means that they can serve as pointers to other locations in memory too. Since the processor does not differentiate between pointers and data, it is up to the developer and the reverser to decide which type it is.</p>
+<p dir="auto">We can break GPRs (not exclusively, but mainly) into sub-registers for more fine-grained control over the data. The 64-bit RAX register for example, consists of the EAX register, which holds the lower 32-bits of the RAX register, the AX register, which holds the lower 16-bits and AL the 8-bits, whereas AH, the following 8-bits, meaning bits 8-15.</p>
+<p dir="auto"><img alt="Pasted image 20250502155214.png" src="Pasted image 20250502155214.png" class="internal-embed"><br>
+<em>List of GPRs, their sub-registers and their main purpose, image by</em> <a data-tooltip-position="top" aria-label="https://wiki.osdev.org/CPU_Registers_x86-64" rel="noopener" class="external-link" href="https://wiki.osdev.org/CPU_Registers_x86-64" target="_blank">osdev.org</a></p>
+<h4 data-heading="Pointer Registers" dir="auto">Pointer Registers</h4>
+<p dir="auto">The Instruction Pointer (RIP) is the main pointer register in the processor and it determines what instruction the processor will execute next. The processor looks at the pointer that it holds, and fetches, decodes and executes the instruction that it points to. These three steps make up the "Instruction Cycle" of the computer.</p>
+<p dir="auto">We can also consider the Register Stack Pointer (RSP) and Register Base Pointer (RBP) types of pointer registers. RSP holds the address of the location of the top of the stack. When we PUSH or POP data onto the stack, we use the RSP register as a reference. A programmer can manually increase of decrease the value of RSP, compared to the base, which allocates and de-allocates memory on the stack, for future use.</p>
+<p dir="auto">RBP holds the value of the base of the stack (Base / Frame pointer). We use the RBP register to allow for the creation of multiple sub-stacks (when calling functions for example), by changing the address that it points to. Additionally, we can consider the RBP register as a kind of anchor-point, with which we can point to any element on the stack at a given point, without the need to take shifts of RSP into consideration.</p>
+<hr dir="auto">
+<p dir="auto"><strong>NOTE</strong></p>
+<p dir="auto">RSP and RBP are NOT Pointer Registers, they are GPRs, but it aids in understanding to consider them the same as the RIP register.</p>
+<hr dir="auto">
+<h4 data-heading="Flags Register" dir="auto">Flags Register</h4>
+<p dir="auto">Sometimes the processor needs to send a signal to itself in the future, to prevent unwanted behaviors, or increase performance. For example, when adding two numbers that result in a number that is greater than the maximum value that the architecture is able to represent, the processor will activate the Carry Flag, that signifies that the resulting value is not going to be the same as the expected one.  </p>
+<p dir="auto">There are 22 bits worth of flags in the RFLAGS register, but the main ones are:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carry Flag (CF)</td>
+<td>Signal Overflow</td>
+</tr>
+<tr>
+<td>Parity Flag (PF)</td>
+<td>Indicate that result of calculation is even</td>
+</tr>
+<tr>
+<td>Zero Flag (ZF)</td>
+<td>Indicate that result of calculation is zero</td>
+</tr>
+<tr>
+<td>Sign Flag (SF)</td>
+<td>Indicate that result of calculation is negative</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">Each of these flags occupy just a single bit in the RFLAGS register, and there are many more flags that have a unique task. More information regarding flags and registers can be found <a data-tooltip-position="top" aria-label="https://wiki.osdev.org/CPU_Registers_x86-64" rel="noopener" class="external-link" href="https://wiki.osdev.org/CPU_Registers_x86-64" target="_blank">here</a>.</p>
+<h4 data-heading="Register Calling Conventions" dir="auto">Register Calling Conventions</h4>
+<p dir="auto">When writing assembly, or compiling source code, it is useful to have a few guidelines that everyone follows. The most important family of guidelines that exists is the Calling Convention set of rules, when calling or getting called by a function. </p>
+<p dir="auto">Just like in source code, we sometimes want to pass values to a callee function. The GPRs allow for 6 values to be passed, and the rest need to be put on the stack, as will be analysed in the Stack sub-chapter. The registers follow the RDI, RSI, RDX, RCX, R8 and R9 order, meaning that RDI is the first argument that is being passed to the function and R9 the sixth. </p>
+<p dir="auto">When giving control back to the caller, at the end of a function, the return value is stored in the RAX register. So, if we </p>
+<p dir="auto">There are also conventions regarding the way that the value of a register should be saved onto the stack, but that is not required knowledge for the time being.</p>
+<pre dir="auto" class="language-asm" tabindex="0"><code class="language-asm is-loaded">&lt;equation&gt;:
+   endbr64 
+   push   %rbp
+   mov    %rsp,%rbp
+   mov    %edi,-0x14(%rbp) 
+   mov    %esi,-0x18(%rbp) 
+   mov    -0x14(%rbp),%eax ; Move a into the EAX register
+   imul   %eax,%eax        ; Multiply a by itself to get the square
+   mov    %eax,%edx
+   mov    -0x18(%rbp),%eax ; Retrieve the value of b
+   add    %edx,%eax        ; Add b to EAX, which now contains a^2
+   mov    %eax,-0x4(%rbp)
+   mov    -0x4(%rbp),%eax  ; Store the resulting value in EAX, so that the caller (main) is able to use it
+   pop    %rbp
+   ret    
+
+
+&lt;main&gt;:
+  endbr64 
+  push   %rbp
+  mov    %rsp,%rbp
+  sub    $0x20,%rsp
+  mov    %edi,-0x14(%rbp)
+  mov    %rsi,-0x20(%rbp)
+  movl   $0x33,-0xc(%rbp) ; Here, a gets initialized
+  movl   $0xc,-0x8(%rbp)  ; Here, b gets initialized
+  mov    -0x8(%rbp),%edx  ; b is stored inside the EDX register
+  mov    -0xc(%rbp),%eax  ; a is stored inside the EAX register
+  mov    %edx,%esi        ; b is moved into ESI, second argument register
+  mov    %eax,%edi        ; a is moved into EDI, which is the first argument 
+  call   1129 &lt;equation&gt;  ; Call the equation function
+  mov    %eax,-0x4(%rbp)  ; Store the result of the function on the stack
+  mov    $0x0,%eax
+  leave  
+  ret    
+</code><button class="copy-code-button">Copy</button></pre>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+### Stack
+<p dir="auto">The stack is a structure inside Random Access Memory (RAM) that is used by the program to store local variables for a limited amount of time. As previously mentioned, there can be multiple sub-stacks that are described by RBP (Base) and RSP (Top). </p>
+<p dir="auto">Imagining the stack as a stack data-structure is not entirely correct. PUSHing (adding) and POPing (removing) elements from the stack is one of the most used features of it. Besides that, we are also able to specify locations on it directly. An addressable location on the stack is able to store as many bits as the architecture of the processor. x86-64 is a 64-bit architecture, so each location on the stack is able to hold 64-bits worth of data. This means that it is ideal for static size, and small data structures, with dynamic size, and larger data structure moving to the heap.</p>
+<p dir="auto">The stack is used when the amount of data that we need to store is more than the registers are able to provide. This process is called stack-spilling and introduces minor slow-downs, since registers are faster than RAM, but is quite often unavoidable.</p>
+<pre dir="auto"><code>0x7fffffffda90: 0xffffdac0      0x00007fff      0x5555517c      0x00005555
+0x7fffffffdaa0: 0xffffdbd8      0x00007fff      0x00000064      0x00000001
+0x7fffffffdab0: 0x00001000      !0x00000033     !0x0000000c     0x00005555
+0x7fffffffdac0: 0x00000001      0x00000000      0xf7d9cd90      0x00007fff
+0x7fffffffdad0: 0x00000000      0x00000000      0x5555514c      0x00005555
+
+We can see that 0x33 is stored in dab4 and 0xc in dab8, which are locations on the stack.
+</code><button class="copy-code-button">Copy</button></pre>
+<hr dir="auto">
+<p dir="auto"><strong>Example of direct indexing on the stack</strong></p>
+<p dir="auto">Consider this scenario, you push a value onto the stack and after it push 4 more values, moving the RSP away from it. When you want to access the value that you pushed onto the stack, you have to pop off each of the 4 following element to reach it. This will of course overwrite those elements, and maintaining them would be a big hassle. Instead of POPing 4 times, we can directly specify the location manually.</p>
+<pre dir="auto" class="language-asm" tabindex="0"><code class="language-asm is-loaded">PUSH 1
+PUSH 2
+PUSH 3
+PUSH 4
+PUSH 5
+
+MOV RAX, [RSP + 32] ; Load 1 into RAX, offset is 4 x 8 = 32
+</code><button class="copy-code-button">Copy</button></pre>
+<hr dir="auto">
+<p dir="auto"><img alt="Pasted image 20250502164506.png" src="Pasted image 20250502164506.png" class="internal-embed"><br>
+<em>Stack from a system with 32-bit architecture, image from <a data-tooltip-position="top" aria-label="https://www.cs.virginia.edu/~evans/cs216/guides/x86.html" rel="noopener" class="external-link" href="https://www.cs.virginia.edu/~evans/cs216/guides/x86.html" target="_blank">virginia.edu</a>.</em></p>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+### Heap
+<p dir="auto">Heap memory is also a memory structure inside RAM, but it's implementation and usage differs slightly, when compared to the stack. Heap memory does not allow for PUSHing and POPing, but only direct indexing. When adding data to the heap, the computer needs to first check if there is enough space to hold the data. If that is not the case, memory is allocated, which is an expensive operation. Access and write times are the same between the stack and the heap, but the allocation time overhead makes it less appealing in cases where high-performance is important.</p>
+<p dir="auto"><img alt="Pasted image 20250502181828.png" src="Pasted image 20250502181828.png" class="internal-embed"><br>
+<em>Memory Layout of Programs, image from <a data-tooltip-position="top" aria-label="https://stackoverflow.com/questions/73420465/how-the-operating-system-manages-the-stack-and-heap-growing-and-shrinking" rel="noopener" class="external-link" href="https://stackoverflow.com/questions/73420465/how-the-operating-system-manages-the-stack-and-heap-growing-and-shrinking" target="_blank">stackoverflow</a>.</em></p>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+### Endianness 
+<p dir="auto">When storing data inside memory there are two ways to order the bytes. </p>
+<p dir="auto">The most-used type of endianness is little-endian, which stores bytes in "reverse" order, from last to first, in the Least Significant Byte (LSB). This means that if we want to store "AAA" inside a 4-byte register (0x00000000) that the last byte would be occupied first, then the second to last, then the third to last (0x00000041 -&gt; 0x00004141 -&gt; 0x00414141). Little-endian is in some cases faster than big-endian, since addition and subtraction are sped up. </p>
+<p dir="auto">Big-endian stores data in the same manner that the English language is read, from left to right. The first byte is held in the most-significant index and subsequent ones in the proceeding ones. Fitting "AAA" in a 4-byte big-endian register would be the inverse of the little-endian process (0x41000000 -&gt; 0x41410000 -&gt; 0x41414100),</p>
+<p dir="auto">On Linux you can find out how the program stores the bytes by using the "file" command, with the name of the program as an argument.</p>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+## Source Code
+<p dir="auto">Being proficient in forward engineering is required for reverse engineering. Many of the standard programming patterns have an equivalent disassembled version, and this aids us in the process of understanding a binary file. </p>
+<h3 data-heading="Variables" dir="auto">Variables</h3>
+<p dir="auto">To store values in memory, we use variables. The processor can not differentiate between data types, since it sees everything as numbers (bits), so types are mainly used for programmers to be better able to understand and debug programs. </p>
+<p dir="auto">Variables can either be primitive or user defined (structures).</p>
+<h4 data-heading="Primitives" dir="auto">Primitives</h4>
+<p dir="auto">Primitive types just describe how much data can fit inside the variable. </p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Size (bytes)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>short</td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>int</td>
+<td>4</td>
+<td></td>
+</tr>
+<tr>
+<td>long</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>float</td>
+<td>4</td>
+<td>Floating point numbers</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>Floating point numbers</td>
+</tr>
+<tr>
+<td>char</td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token keyword">short</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">0x50</span><span class="token punctuation">;</span> <span class="token comment">// Assign a value in hexadecimal format to the variable, does not change the functionality in any way</span>
+<span class="token keyword">long</span> c <span class="token operator">=</span> <span class="token number">0</span>b100000<span class="token punctuation">;</span> <span class="token comment">// We can also use the binary format, once again, it does not change the functionality of it.</span>
+<span class="token keyword">float</span> d <span class="token operator">=</span> <span class="token number">3.13</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span> e <span class="token operator">=</span> <span class="token number">222222.222222</span><span class="token punctuation">;</span>
+<span class="token keyword">char</span> f <span class="token operator">=</span> <span class="token char">'f'</span><span class="token punctuation">;</span> <span class="token comment">// Characters are just numbers, so this is the same as assigning it the value of 102</span>
+<span class="token keyword">char</span> g <span class="token operator">=</span> <span class="token number">64</span><span class="token punctuation">;</span>
+
+</code><button class="copy-code-button">Copy</button></pre>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Operation</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+</td>
+<td>Addition</td>
+<td>1 + 3</td>
+</tr>
+<tr>
+<td>-</td>
+<td>Subtraction</td>
+<td>1 - 3</td>
+</tr>
+<tr>
+<td>/</td>
+<td>Division</td>
+<td>6 / 2</td>
+</tr>
+<tr>
+<td>*</td>
+<td>Multiplication</td>
+<td>7 * 7</td>
+</tr>
+<tr>
+<td>%</td>
+<td>Modulo</td>
+<td>5 % 3 = 2</td>
+</tr>
+<tr>
+<td>=</td>
+<td>Assignment</td>
+<td>int x = 5 + 9</td>
+</tr>
+<tr>
+<td>==</td>
+<td>Check Equality</td>
+<td>int x = 5;<br>int y = 5;<br>if (x == 5) ...</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>Bitwise AND</td>
+<td>0b01 &amp; 0b11 = 0b01</td>
+</tr>
+<tr>
+<td>|</td>
+<td>Bitwise OR</td>
+<td>0b10 | 0b01 = 0b11</td>
+</tr>
+<tr>
+<td>^</td>
+<td>Bitwise XOR</td>
+<td>0b11 | 0b10 = 0b01</td>
+</tr>
+<tr>
+<td>~</td>
+<td>Bitwise NOT</td>
+<td>int x = 0b010;<br>int y = ~x;<br>// y = 0b101</td>
+</tr>
+<tr>
+<td>&gt;&gt;</td>
+<td>Bitwise Right Shift</td>
+<td>0b0101 &gt;&gt; 1 = 0b0010</td>
+</tr>
+<tr>
+<td>&lt;&lt;</td>
+<td>Bitwise Left Shift</td>
+<td>0b0101 &lt;&lt; 1 = 0b1010</td>
+</tr>
+</tbody>
+</table>
+<h4 data-heading="Structures" dir="auto">Structures</h4>
+<p dir="auto">It is often advantageous to be able to group multiple variables together into one unit. In the C language we are able to define our own custom structures that contain an arbitrary amount of arbitrary data types. </p>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token keyword">struct</span> <span class="token class-name">person</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+  <span class="token keyword">float</span> height<span class="token punctuation">;</span>
+  <span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<h4 data-heading="Pointers" dir="auto">Pointers</h4>
+<p dir="auto">Pointers seem to be the bane of most programmers, but in reality they are just variables that hold the location of a location in memory. This can be used for standalone variables, but is the basis of arrays, and as we will see, Strings. </p>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stddef.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">int</span> x<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> <span class="token operator">*</span>pointer <span class="token operator">=</span> x<span class="token punctuation">;</span>
+
+  <span class="token class-name">size_t</span> length <span class="token operator">=</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    sum <span class="token operator">+=</span> <span class="token operator">*</span>pointer<span class="token punctuation">;</span>
+    pointer <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code><button class="copy-code-button">Copy</button></pre>
+<h4 data-heading="Strings" dir="auto">Strings</h4>
+<p dir="auto">Strings are a unique type of variable, since they are closer to lists than any primitive type. A pointer object points to the first character of the string, which is usually stored on the heap, and the computer keeps moving through it until it finds a string terminating byte. String terminating bytes (NULL bytes - 0x00) consist of only 0s, and signal to the computer that there are going to be no more characters after it.</p>
+<h3 data-heading="Conditionals" dir="auto">Conditionals</h3>
+<p dir="auto">When we want the program to perform an operation under only certain conditions we can use a conditional to allow or disallow the execution of the nested lines.</p>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">15</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">%</span> <span class="token number">5</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Number is divisible by 5"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded">
+<span class="token keyword">int</span> age <span class="token operator">=</span> <span class="token number">21</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> money <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> item_price <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span> age <span class="token operator">&gt;=</span> <span class="token number">18</span> <span class="token operator">&amp;&amp;</span> money <span class="token operator">&gt;=</span> item_price <span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"You can buy this item"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	money <span class="token operator">-=</span> item_price<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> 
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span> age <span class="token operator">&lt;</span> <span class="token number">18</span> <span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"You are too young"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span> <span class="token punctuation">{</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Get your money up"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Logical Operation</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&amp;&amp;</td>
+<td>Logical AND</td>
+<td>X &amp;&amp; Y</td>
+</tr>
+<tr>
+<td>||</td>
+<td>Logical OR</td>
+<td>X || Y</td>
+</tr>
+<tr>
+<td>!</td>
+<td>Logical NOT</td>
+<td>!X</td>
+</tr>
+</tbody>
+</table>
+<h3 data-heading="Loops" dir="auto">Loops</h3>
+<p dir="auto">When we want to perform an operation multiple times, we can use a loop, instead of duplicating the code. The two main types of loops are For loops and While loops, but as we will see in further chapters, they are both While loops.</p>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token keyword">int</span> sum<span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	sum <span class="token operator">+=</span> i<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token keyword">int</span> i<span class="token punctuation">,</span> sum<span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	sum <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	i <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// or i++;</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<h3 data-heading="Functions" dir="auto">Functions</h3>
+<p dir="auto">Functions allow us to define a set of instructions that will be performed, whenever it is called. We can pass parameters to functions, through function arguments, but it is not required. We can also retrieve the result of the function, but yet again, that is not required. </p>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token comment">/*
+In the signature of the function:
+	long determines the return type, could be any defined data type, including user-defined
+	calculateSumSquared is the name of the function
+	int a is the data type of the first argument and its name
+	int b is the data type of the second argument and its name
+*/</span>
+<span class="token keyword">long</span> <span class="token function">calculateSumSquared</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">long</span> result <span class="token operator">=</span> <span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">long</span> sumS <span class="token operator">=</span> <span class="token function">calculateSumSquare</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// sum = 9 </span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded">
+<span class="token keyword">void</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// No return required, since void</span>
+<span class="token punctuation">}</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+## Randomness
+<p dir="auto">A computer is just a selection of hardware parts, with electricity running through them. Its behavior is dependent on the interaction between hardware and electricity, and thus the development of a state is largely predictable. It helps to think of a computer as a closed system (which is not actually the case at a physical level), so we can turn it into a Deterministic Finite State Automaton (DFA). </p>
+<p dir="auto">A DFA is a machine (automaton), which when given an arbitrary state, develops into the same state each time, since its behavior is reliant on the state itself. This means that given a starting state, we can predict what the following state is going to be, since we have access to the structure of the current state. </p>
+<p dir="auto">This is important when discussing randomness in computers, because this means that randomness is reliant on the constitution of the state itself, meaning that randomness is not random in the field of computing. </p>
+<p dir="auto">To create a truly random number, the computer would have to hold a facility that is able to function in spite of the current state, which is not the case. </p>
+<h3 data-heading="Implementations" dir="auto">Implementations</h3>
+<p dir="auto">There are two main ways to produce random numbers. The first one is to use a predetermined seed (number), alongside a function that alters its value through some mathematical process. The function itself is unimportant, but a good randomizer function allows for a large range of values to be produced with minimal, or no, loops and highly-predictable patterns (ex. 2-&gt;4-&gt;6-&gt;8 / 10-&gt;100-&gt;1000 / 1-&gt;-1-&gt;2-&gt;-2-&gt;3 / 1-&gt;-1-&gt;1-&gt;-1 etc.)</p>
+<p dir="auto">If we are able to reverse the function and find the original seed, we are able to reconstruct the entire stream of values that the randomizer produced, for a given service.</p>
+<p dir="auto">Besides seeds, we are also able to use the current timestamp of the computer. Each computer has its own internal clock that is not easy to interpret as a human, but critical for it to function properly. A programmer is able to query the clock and retrieve the current time, at the time of execution of the instruction itself. This means that the behavior of the program changes with each execution, and exploiting it becomes more difficult, since we also need to find a way to retrieve the timestamp that was produced.</p>
+<hr dir="auto">
+<p dir="auto"><strong>DOOM Tangent - Optional Information</strong></p>
+<p dir="auto">The developers of the classic DOOM game had to find a way to introduce random elements into their game, without it impacting the performance of the game. At that time, random number generation (RNG) was computationally expensive, given the hardware, and producing Random numbers at a large enough scale would impact the performance.  They realized that a simple constant array of bytes would suffice, since when highly distributed, individual deterministic actions are perceived as random by the player. </p>
+<p dir="auto">No-one really uses this technique anymore, but it deserves to be mentioned.</p>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token keyword">unsigned</span> <span class="token keyword">char</span> rndtable<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token number">0</span><span class="token punctuation">,</span>   <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">109</span><span class="token punctuation">,</span> <span class="token number">220</span><span class="token punctuation">,</span> <span class="token number">222</span><span class="token punctuation">,</span> <span class="token number">241</span><span class="token punctuation">,</span> <span class="token number">149</span><span class="token punctuation">,</span> <span class="token number">107</span><span class="token punctuation">,</span>  <span class="token number">75</span><span class="token punctuation">,</span> <span class="token number">248</span><span class="token punctuation">,</span> <span class="token number">254</span><span class="token punctuation">,</span> <span class="token number">140</span><span class="token punctuation">,</span>  <span class="token number">16</span><span class="token punctuation">,</span>  <span class="token number">66</span> <span class="token punctuation">,</span>
+    <span class="token number">74</span><span class="token punctuation">,</span>  <span class="token number">21</span><span class="token punctuation">,</span> <span class="token number">211</span><span class="token punctuation">,</span>  <span class="token number">47</span><span class="token punctuation">,</span>  <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">242</span><span class="token punctuation">,</span> <span class="token number">154</span><span class="token punctuation">,</span>  <span class="token number">27</span><span class="token punctuation">,</span> <span class="token number">205</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">,</span> <span class="token number">161</span><span class="token punctuation">,</span>  <span class="token number">89</span><span class="token punctuation">,</span>  <span class="token number">77</span><span class="token punctuation">,</span>  <span class="token number">36</span> <span class="token punctuation">,</span>
+    <span class="token number">95</span><span class="token punctuation">,</span> <span class="token number">110</span><span class="token punctuation">,</span>  <span class="token number">85</span><span class="token punctuation">,</span>  <span class="token number">48</span><span class="token punctuation">,</span> <span class="token number">212</span><span class="token punctuation">,</span> <span class="token number">140</span><span class="token punctuation">,</span> <span class="token number">211</span><span class="token punctuation">,</span> <span class="token number">249</span><span class="token punctuation">,</span>  <span class="token number">22</span><span class="token punctuation">,</span>  <span class="token number">79</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span>  <span class="token number">50</span><span class="token punctuation">,</span>  <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">188</span> <span class="token punctuation">,</span>
+    <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">140</span><span class="token punctuation">,</span> <span class="token number">202</span><span class="token punctuation">,</span> <span class="token number">120</span><span class="token punctuation">,</span>  <span class="token number">68</span><span class="token punctuation">,</span> <span class="token number">145</span><span class="token punctuation">,</span>  <span class="token number">62</span><span class="token punctuation">,</span>  <span class="token number">70</span><span class="token punctuation">,</span> <span class="token number">184</span><span class="token punctuation">,</span> <span class="token number">190</span><span class="token punctuation">,</span>  <span class="token number">91</span><span class="token punctuation">,</span> <span class="token number">197</span><span class="token punctuation">,</span> <span class="token number">152</span><span class="token punctuation">,</span> <span class="token number">224</span> <span class="token punctuation">,</span>
+    <span class="token number">149</span><span class="token punctuation">,</span> <span class="token number">104</span><span class="token punctuation">,</span>  <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">178</span><span class="token punctuation">,</span> <span class="token number">252</span><span class="token punctuation">,</span> <span class="token number">182</span><span class="token punctuation">,</span> <span class="token number">202</span><span class="token punctuation">,</span> <span class="token number">182</span><span class="token punctuation">,</span> <span class="token number">141</span><span class="token punctuation">,</span> <span class="token number">197</span><span class="token punctuation">,</span>   <span class="token number">4</span><span class="token punctuation">,</span>  <span class="token number">81</span><span class="token punctuation">,</span> <span class="token number">181</span><span class="token punctuation">,</span> <span class="token number">242</span> <span class="token punctuation">,</span>
+    <span class="token number">145</span><span class="token punctuation">,</span>  <span class="token number">42</span><span class="token punctuation">,</span>  <span class="token number">39</span><span class="token punctuation">,</span> <span class="token number">227</span><span class="token punctuation">,</span> <span class="token number">156</span><span class="token punctuation">,</span> <span class="token number">198</span><span class="token punctuation">,</span> <span class="token number">225</span><span class="token punctuation">,</span> <span class="token number">193</span><span class="token punctuation">,</span> <span class="token number">219</span><span class="token punctuation">,</span>  <span class="token number">93</span><span class="token punctuation">,</span> <span class="token number">122</span><span class="token punctuation">,</span> <span class="token number">175</span><span class="token punctuation">,</span> <span class="token number">249</span><span class="token punctuation">,</span>   <span class="token number">0</span> <span class="token punctuation">,</span>
+    <span class="token number">175</span><span class="token punctuation">,</span> <span class="token number">143</span><span class="token punctuation">,</span>  <span class="token number">70</span><span class="token punctuation">,</span> <span class="token number">239</span><span class="token punctuation">,</span>  <span class="token number">46</span><span class="token punctuation">,</span> <span class="token number">246</span><span class="token punctuation">,</span> <span class="token number">163</span><span class="token punctuation">,</span>  <span class="token number">53</span><span class="token punctuation">,</span> <span class="token number">163</span><span class="token punctuation">,</span> <span class="token number">109</span><span class="token punctuation">,</span> <span class="token number">168</span><span class="token punctuation">,</span> <span class="token number">135</span><span class="token punctuation">,</span>   <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">235</span> <span class="token punctuation">,</span>
+    <span class="token number">25</span><span class="token punctuation">,</span>  <span class="token number">92</span><span class="token punctuation">,</span>  <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">145</span><span class="token punctuation">,</span> <span class="token number">138</span><span class="token punctuation">,</span>  <span class="token number">77</span><span class="token punctuation">,</span>  <span class="token number">69</span><span class="token punctuation">,</span> <span class="token number">166</span><span class="token punctuation">,</span>  <span class="token number">78</span><span class="token punctuation">,</span> <span class="token number">176</span><span class="token punctuation">,</span> <span class="token number">173</span><span class="token punctuation">,</span> <span class="token number">212</span><span class="token punctuation">,</span> <span class="token number">166</span><span class="token punctuation">,</span> <span class="token number">113</span> <span class="token punctuation">,</span>
+    <span class="token number">94</span><span class="token punctuation">,</span> <span class="token number">161</span><span class="token punctuation">,</span>  <span class="token number">41</span><span class="token punctuation">,</span>  <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">239</span><span class="token punctuation">,</span>  <span class="token number">49</span><span class="token punctuation">,</span> <span class="token number">111</span><span class="token punctuation">,</span> <span class="token number">164</span><span class="token punctuation">,</span>  <span class="token number">70</span><span class="token punctuation">,</span>  <span class="token number">60</span><span class="token punctuation">,</span>   <span class="token number">2</span><span class="token punctuation">,</span>  <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">171</span><span class="token punctuation">,</span>  <span class="token number">75</span> <span class="token punctuation">,</span>
+    <span class="token number">136</span><span class="token punctuation">,</span> <span class="token number">156</span><span class="token punctuation">,</span>  <span class="token number">11</span><span class="token punctuation">,</span>  <span class="token number">56</span><span class="token punctuation">,</span>  <span class="token number">42</span><span class="token punctuation">,</span> <span class="token number">146</span><span class="token punctuation">,</span> <span class="token number">138</span><span class="token punctuation">,</span> <span class="token number">229</span><span class="token punctuation">,</span>  <span class="token number">73</span><span class="token punctuation">,</span> <span class="token number">146</span><span class="token punctuation">,</span>  <span class="token number">77</span><span class="token punctuation">,</span>  <span class="token number">61</span><span class="token punctuation">,</span>  <span class="token number">98</span><span class="token punctuation">,</span> <span class="token number">196</span> <span class="token punctuation">,</span>
+    <span class="token number">135</span><span class="token punctuation">,</span> <span class="token number">106</span><span class="token punctuation">,</span>  <span class="token number">63</span><span class="token punctuation">,</span> <span class="token number">197</span><span class="token punctuation">,</span> <span class="token number">195</span><span class="token punctuation">,</span>  <span class="token number">86</span><span class="token punctuation">,</span>  <span class="token number">96</span><span class="token punctuation">,</span> <span class="token number">203</span><span class="token punctuation">,</span> <span class="token number">113</span><span class="token punctuation">,</span> <span class="token number">101</span><span class="token punctuation">,</span> <span class="token number">170</span><span class="token punctuation">,</span> <span class="token number">247</span><span class="token punctuation">,</span> <span class="token number">181</span><span class="token punctuation">,</span> <span class="token number">113</span> <span class="token punctuation">,</span>
+    <span class="token number">80</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">,</span> <span class="token number">108</span><span class="token punctuation">,</span>   <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">237</span><span class="token punctuation">,</span> <span class="token number">129</span><span class="token punctuation">,</span> <span class="token number">226</span><span class="token punctuation">,</span>  <span class="token number">79</span><span class="token punctuation">,</span> <span class="token number">107</span><span class="token punctuation">,</span> <span class="token number">112</span><span class="token punctuation">,</span> <span class="token number">166</span><span class="token punctuation">,</span> <span class="token number">103</span><span class="token punctuation">,</span> <span class="token number">241</span> <span class="token punctuation">,</span>
+    <span class="token number">24</span><span class="token punctuation">,</span> <span class="token number">223</span><span class="token punctuation">,</span> <span class="token number">239</span><span class="token punctuation">,</span> <span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">198</span><span class="token punctuation">,</span>  <span class="token number">58</span><span class="token punctuation">,</span>  <span class="token number">60</span><span class="token punctuation">,</span>  <span class="token number">82</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">,</span>   <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">184</span><span class="token punctuation">,</span>  <span class="token number">66</span><span class="token punctuation">,</span> <span class="token number">143</span><span class="token punctuation">,</span> <span class="token number">224</span> <span class="token punctuation">,</span>
+    <span class="token number">145</span><span class="token punctuation">,</span> <span class="token number">224</span><span class="token punctuation">,</span>  <span class="token number">81</span><span class="token punctuation">,</span> <span class="token number">206</span><span class="token punctuation">,</span> <span class="token number">163</span><span class="token punctuation">,</span>  <span class="token number">45</span><span class="token punctuation">,</span>  <span class="token number">63</span><span class="token punctuation">,</span>  <span class="token number">90</span><span class="token punctuation">,</span> <span class="token number">168</span><span class="token punctuation">,</span> <span class="token number">114</span><span class="token punctuation">,</span>  <span class="token number">59</span><span class="token punctuation">,</span>  <span class="token number">33</span><span class="token punctuation">,</span> <span class="token number">159</span><span class="token punctuation">,</span>  <span class="token number">95</span> <span class="token punctuation">,</span>
+    <span class="token number">28</span><span class="token punctuation">,</span> <span class="token number">139</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">,</span>  <span class="token number">98</span><span class="token punctuation">,</span> <span class="token number">125</span><span class="token punctuation">,</span> <span class="token number">196</span><span class="token punctuation">,</span>  <span class="token number">15</span><span class="token punctuation">,</span>  <span class="token number">70</span><span class="token punctuation">,</span> <span class="token number">194</span><span class="token punctuation">,</span> <span class="token number">253</span><span class="token punctuation">,</span>  <span class="token number">54</span><span class="token punctuation">,</span>  <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">109</span><span class="token punctuation">,</span> <span class="token number">226</span> <span class="token punctuation">,</span>
+    <span class="token number">71</span><span class="token punctuation">,</span>  <span class="token number">17</span><span class="token punctuation">,</span> <span class="token number">161</span><span class="token punctuation">,</span>  <span class="token number">93</span><span class="token punctuation">,</span> <span class="token number">186</span><span class="token punctuation">,</span>  <span class="token number">87</span><span class="token punctuation">,</span> <span class="token number">244</span><span class="token punctuation">,</span> <span class="token number">138</span><span class="token punctuation">,</span>  <span class="token number">20</span><span class="token punctuation">,</span>  <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token number">251</span><span class="token punctuation">,</span>  <span class="token number">26</span><span class="token punctuation">,</span>  <span class="token number">36</span> <span class="token punctuation">,</span>
+    <span class="token number">17</span><span class="token punctuation">,</span>  <span class="token number">46</span><span class="token punctuation">,</span>  <span class="token number">52</span><span class="token punctuation">,</span> <span class="token number">231</span><span class="token punctuation">,</span> <span class="token number">232</span><span class="token punctuation">,</span>  <span class="token number">76</span><span class="token punctuation">,</span>  <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">221</span><span class="token punctuation">,</span>  <span class="token number">84</span><span class="token punctuation">,</span>  <span class="token number">37</span><span class="token punctuation">,</span> <span class="token number">216</span><span class="token punctuation">,</span> <span class="token number">165</span><span class="token punctuation">,</span> <span class="token number">212</span><span class="token punctuation">,</span> <span class="token number">106</span> <span class="token punctuation">,</span>
+    <span class="token number">197</span><span class="token punctuation">,</span> <span class="token number">242</span><span class="token punctuation">,</span>  <span class="token number">98</span><span class="token punctuation">,</span>  <span class="token number">43</span><span class="token punctuation">,</span>  <span class="token number">39</span><span class="token punctuation">,</span> <span class="token number">175</span><span class="token punctuation">,</span> <span class="token number">254</span><span class="token punctuation">,</span> <span class="token number">145</span><span class="token punctuation">,</span> <span class="token number">190</span><span class="token punctuation">,</span>  <span class="token number">84</span><span class="token punctuation">,</span> <span class="token number">118</span><span class="token punctuation">,</span> <span class="token number">222</span><span class="token punctuation">,</span> <span class="token number">187</span><span class="token punctuation">,</span> <span class="token number">136</span> <span class="token punctuation">,</span>
+    <span class="token number">120</span><span class="token punctuation">,</span> <span class="token number">163</span><span class="token punctuation">,</span> <span class="token number">236</span><span class="token punctuation">,</span> <span class="token number">249</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<hr dir="auto">
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+<h1 data-heading="Reversing" dir="auto">Reversing</h1>
+<h2 data-heading="Tools" dir="auto">Tools</h2>
+<p dir="auto">Due to the niche nature of Reverse Engineering, not many tools exist out there that are aimed at simplifying the work-process. The tools are also incredibly complex, so only big organizations (such as the NSA...) are able to produce them. To reverse engineer a program we just need a way to statically and dynamically analyse them.</p>
+<h3 data-heading="Static Analysis" dir="auto">Static Analysis</h3>
+<p dir="auto">Static analysis is the process of taking an executable file and analyzing its contents without executing the file itself. The result is the functional side of the program (assembly instructions) alongside any possible hard coded data values that were stored alongside them (mainly strings). </p>
+<p dir="auto">If you are using Linux on your system, you will likely have access to the "objdump" tool. Using:</p>
+<pre dir="auto" class="language-bash" tabindex="0"><code class="language-bash is-loaded">objdump -d <span class="token punctuation">[</span>PATH_TO_EXECUTABLE<span class="token punctuation">]</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<p dir="auto">will print the disassembled view of the chosen binary. Don't worry if you don't understand it just yet, we will get to that point.</p>
+<p dir="auto">Objdump is nice to work with for small projects (handful of simple functions), but gives us no interactability with the file itself. Programs like <a data-tooltip-position="top" aria-label="https://ghidra-sre.org/" rel="noopener" class="external-link" href="https://ghidra-sre.org/" target="_blank">Ghidra</a> address this issue, by providing a whole suite of tools for reverse engineers. </p>
+<p dir="auto">The program itself is intended for Malware Analysis, but a binary is a binary.</p>
+<p dir="auto">One of the key features that Ghidra allows us to use, is the Decompiler. Instead of looking at assembly instructions manually, the decompilation software parses the disassembly and creates high-level pseudocode with equivalent functionality. We are then able to read that pseudocode to get a better understanding of the underlying logic of the program. </p>
+<hr dir="auto">
+<p dir="auto"><strong>NOTE - Decompilation</strong></p>
+<p dir="auto">Decompilation is not a perfect process, and a lot of information is lost during it. It is nice to work with, but investing into understanding assembly, will prove beneficial in the long run.</p>
+<hr dir="auto">
+<p dir="auto"><strong>NOTE - Choice of Disassembler/Decompiler</strong></p>
+<p dir="auto">There are a few other Disassemblers/Decompilers, namely <a data-tooltip-position="top" aria-label="https://hex-rays.com/ida-free" rel="noopener" class="external-link" href="https://hex-rays.com/ida-free" target="_blank">IDA</a>,  <a data-tooltip-position="top" aria-label="https://binary.ninja/" rel="noopener" class="external-link" href="https://binary.ninja/" target="_blank">Binja</a> and <a data-tooltip-position="top" aria-label="https://rada.re/n/" rel="noopener" class="external-link" href="https://rada.re/n/" target="_blank">Radare</a>. Which one you choose is up to you, since they are all quite equal in terms of quality. Ghidra has one of the nicest decompilers, but IDA has one of the nicest disassemblers. Binary Ninja (Binja) is both a dynamic (we talk about this in the next chapter) and static analysis tool with both being of relatively high quality. People tend to fight over tribalism, instead of the actual quality of the products themselves, so use them all and decide for yourself. </p>
+<p dir="auto">Personally I use the Ghidra and Binja stack on both Linux and Windows, and have had no troubles. There are a few complementary tools that I do use on Linux, that I will talk about during the Dynamic Analysis chapter.</p>
+<hr dir="auto">
+<h3 data-heading="Dynamic Analysis" dir="auto">Dynamic Analysis</h3>
+<p dir="auto">Instead of just relying on the phenotype of the code during analysis, we can see what the state of the CPU and memory is like during execution. By using a debugger we can stop the execution of the program at user-defined spots and step through the assembly instruction by instruction to get a better grasp of how data is operated upon. </p>
+<p dir="auto">All of the tools referenced in the Static Analysis chapter also have the capacity to debug or attach debuggers, but using standalone debuggers is usually the better option. On windows <a data-tooltip-position="top" aria-label="https://x64dbg.com/" rel="noopener" class="external-link" href="https://x64dbg.com/" target="_blank">x64dbg</a> is the standard, but Binja and <a data-tooltip-position="top" aria-label="https://www.ollydbg.de/" rel="noopener" class="external-link" href="https://www.ollydbg.de/" target="_blank">ollydbg(outdated)</a> can also be used. Since x64dbg is Windows specific, we have to use another debugger on Linux. <a data-tooltip-position="top" aria-label="https://www.sourceware.org/gdb/" rel="noopener" class="external-link" href="https://www.sourceware.org/gdb/" target="_blank">GDB</a> can do everything x64dbg  can, but with a simpler UI. Using the <a data-tooltip-position="top" aria-label="https://github.com/pwndbg/pwndbg" rel="noopener" class="external-link" href="https://github.com/pwndbg/pwndbg" target="_blank">PWNDBG</a> extension for GDB further enhances the capabilities of the debugger, making it the ideal tool for Reversing and PWNing applications.</p>
+<hr dir="auto">
+<p dir="auto"><strong>TANGENT - When to statically, and when to dynamically analyse? </strong></p>
+<p dir="auto">There is no real guide-line on how to decide. In my personal experience statically analyzing at first and then dynamically has granted me fine results. There are people who swear by only using static analysis, and others the same but for dynamic. It is up to the individual reverser to decide when and if they use either option. </p>
+<p dir="auto">For beginners I would suggest following my approach and then tailoring it to create their own workflow.</p>
+<hr dir="auto">
+<h2 data-heading="Memory Scanning" dir="auto">Memory Scanning</h2>
+<p dir="auto">A memory scanner is a feature that usually exists in the aforementioned tools in some barebones way. Dedicated memory scanners give us a lot more freedom over the process of looking at and searching for values in the memory. The best known memory scanner is <a data-tooltip-position="top" aria-label="https://www.cheatengine.org/" rel="noopener" class="external-link" href="https://www.cheatengine.org/" target="_blank">CheatEngine</a> which is heavily used by the video-game modding community. Memory scanners can also be used for non-video game programs but are not necessary.</p>
+<p dir="auto">When we know that a certain numerical value exists inside the program, but do not know the exact location of it, we can skim through the entire memory and find the address where it is stored. CheatEngine also has a disassembler built-in and that means that we can find both the exact locations in memory, where the value is stored, but also see how it is used by the program.</p>
+<p dir="auto">Certain challenges require CheatEngine to be solved, but those cases are few.</p>
+<h3 data-heading="Scripting" dir="auto">Scripting</h3>
+<p dir="auto">Scripting is the forgotten about child of the reverse engineering world. There is no good way to teach scripting, since each use-case is unique. Using scripts to emulate the behavior of the program, or to filter data are two common ones, but there is an infinite amount of possibilities. Platforms like Ghidra allow for embedded scripting, using their custom API, but any scripting language can be used. Python is the most used language for scripting, but Golang and Lua are also good choices. The python <a data-tooltip-position="top" aria-label="https://github.com/Gallopsled/pwntools" rel="noopener" class="external-link" href="https://github.com/Gallopsled/pwntools" target="_blank">PWNTOOLS</a>library implements a lot of features that are impossible to live without once you get used to them. It is useful for both REV and PWN challenges, and is something that everyone should get, even surface level, experience in.</p>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+## x86-64 Assembly Basics
+<p dir="auto">Just as source code is comprised of loops, conditionals, functions and basic mathematical operation, so assembly is comprised of conditionals, functions, data movement and basic mathematical operations. </p>
+<hr dir="auto">
+<p dir="auto"><strong>NOTE - Why are there no loops in assembly? - IMPORTANT</strong></p>
+<p dir="auto">As we mentioned during the explanation of loops, a for loop is just a while loop with nicer syntax. A while loop on the other hand is just a conditional that is evaluated each time we reach a certain line in the code. Assembly languages have a unique feature where we are able to jump to a specific code address, and that means that we can create a makeshift loop by jumping backwards into the code.</p>
+<pre dir="auto" class="language-asm" tabindex="0"><code class="language-asm is-loaded">for_loop:
+    cmp rax, 10                 ; Compare count with 10
+
+    jg end_loop                 ; If count &gt; 10, exit loop
+
+    inc rax                     ; Increment count
+    jmp for_loop                ; Repeat the loop
+
+end_loop:
+	...
+</code><button class="copy-code-button">Copy</button></pre>
+<hr dir="auto">
+<h2 data-heading="Comparisons and Jumps" dir="auto">Comparisons and Jumps</h2>
+<p dir="auto">In Assembly languages we need to explicitly write the instructions that compare two values. Instead of writing </p>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> y<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code><button class="copy-code-button">Copy</button></pre>
+<p dir="auto">we need to write </p>
+<pre dir="auto" class="language-asm" tabindex="0"><code class="language-asm is-loaded">MOV 0x5, EAX
+MOV 0x1, EBX
+CMP EAX, EBX
+JNE [address]
+</code><button class="copy-code-button">Copy</button></pre>
+<p dir="auto">Comparisons can also be used before conditional movement instructions, as will be discussed shortly. When using the CMP operation the result of the subtraction between the first and second values is remembered, by triggering the correct flags. There are many different types of results, which allow for a lot of control over the flow of the program.</p>
+<p dir="auto"><img alt="Pasted image 20250503162839.png" src="Pasted image 20250503162839.png" class="internal-embed"><br>
+<em>Types of Jumps that can be performed, depending on the result of the CMP call, Image from <a data-tooltip-position="top" aria-label="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf" rel="noopener" class="external-link" href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf" target="_blank">Brown University</a>.</em></p>
+<p dir="auto">We can also use the TEST operation, which uses a Bitwise AND, instead of a subtraction.</p>
+<h3 data-heading="Data Movement" dir="auto">Data Movement</h3>
+<p dir="auto">To move values into registers, between registers or from/to a register to/from RAM we need to use a MOV operation. </p>
+<pre dir="auto" class="language-asm" tabindex="0"><code class="language-asm is-loaded">MOV SOURCE, DESTINATION
+</code><button class="copy-code-button">Copy</button></pre>
+<p dir="auto">There are multiple types of movement instructions and they all do slightly different things. Instead of performing manual comparisons and then using jumps for branching, we can use the 'c' prefix with the appropriate suffix to achieve the same behavior in one line, if the following instruction would be a move.</p>
+<p dir="auto"><img alt="Pasted image 20250503161949.png" src="Pasted image 20250503161949.png" class="internal-embed"><br>
+<em>Types of conditional movement operations, Image from <a data-tooltip-position="top" aria-label="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf" rel="noopener" class="external-link" href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf" target="_blank">Brown University</a>.</em></p>
+<h3 data-heading="Mathematical Operations" dir="auto">Mathematical Operations</h3>
+<p dir="auto">Most mathematical operations that are present in the c language, can also be performed in assembly languages, quite succinctly. For example, when adding two values, instead of using the '+' symbol, we use the "ADD" operation, with the two values are operands.</p>
+<p dir="auto"><img alt="Pasted image 20250503165102.png" src="Pasted image 20250503165102.png" class="internal-embed"><br>
+<em>Some common mathematical operations in x86-64, Image from <a data-tooltip-position="top" aria-label="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf" rel="noopener" class="external-link" href="https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf" target="_blank">Brown University</a>.</em></p>
+<h3 data-heading="Functions" dir="auto">Functions</h3>
+<p dir="auto">The basic structure of functions, is quite simple. </p>
+<p dir="auto">The processor changes the value stored inside the RIP register to the first line of the called function. The return address of the caller function is PUSHed on to the stack and the function is executed. At the end a RET call is made to return the control to the caller function, after POPing the return address from the stack.</p>
+<p dir="auto">We are also able to create child processes and threads that execute functions in parallel with the main and other child processes/threads. This will be covered in future chapters, since parallel processing is quite common in larger applications.</p>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+## Obfuscation Techniques
+<p dir="auto">Many programmers will try to protect their programs by using certain obfuscation techniques. These range from using special compilation flags, to adding anti-debugging system calls, to creating their own Interpreter that we will have to reverse, before we can the program itself. Deeply understanding each technique and how to bypass it requires more effort than just reading this chapter, but hopefully it will give you a good jump-start.</p>
+<h3 data-heading="String Obfuscation" dir="auto">String Obfuscation</h3>
+<p dir="auto">Using strings to locate important bits of code and sensitive information is a key-aspect of reversing. When stored in plaintext, strings can be immediately found, but if obfuscated it is more difficult to do so, since text can become disguised. </p>
+<p dir="auto">The simplest, and possibly most used, technique is XOR encryption of strings. At <a data-tooltip-position="top" aria-label="https://github.com/adamyaxley/Obfuscate" rel="noopener" class="external-link" href="https://github.com/adamyaxley/Obfuscate" target="_blank">compile</a><br>
+or runtime, the strings are passed through an XOR function with a secret key, turning the legible text into a stream of printable and un-printable bytes. This ruins the ability to search for them, which means that we have to spend more time searching. This is not a perfect solution though, since if we can find the encrypted text, decrypting it through brute-force is quite simple, especially when using tools like <a data-tooltip-position="top" aria-label="https://gchq.github.io/CyberChef/" rel="noopener" class="external-link" href="https://gchq.github.io/CyberChef/" target="_blank">CyberChef</a>. </p>
+<h3 data-heading="Junk Code" dir="auto">Junk Code</h3>
+<p dir="auto">Junk Code is not a specific implementation, rather the idea of adding useless data and code to your program to confuse the reverser. The best-known technique that falls under the junk code category are <a data-tooltip-position="top" aria-label="https://en.wikipedia.org/wiki/Opaque_predicate" rel="noopener" class="external-link" href="https://en.wikipedia.org/wiki/Opaque_predicate" target="_blank">Opaque predicates</a>, where conditional statements are added to the code, that are not dependent on the state of the program itself, but whose values are rather pre-determined by the programmer.</p>
+<pre dir="auto" class="language-asm" tabindex="0"><code class="language-asm is-loaded">XOR EAX, EAX
+JZ [address]
+</code><button class="copy-code-button">Copy</button></pre>
+<p dir="auto">In the example above, the result of the first operation is always zero, meaning that the jump will always trigger. This has no effect on the behavior of the program, but rather just complicates the logic of it.</p>
+<p dir="auto">Empty, or useless, or unused functions are also a technique that is used by some. This technique requires the developer to also modify the process of compilation of the program, using special flags, since compilers usually remove dead code. </p>
+<pre dir="auto" class="language-c" tabindex="0"><code class="language-c is-loaded"><span class="token keyword">int</span> <span class="token function">returnFive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> b <span class="token operator">=</span> x<span class="token punctuation">;</span>
+	x <span class="token operator">=</span> x <span class="token operator">-</span> b<span class="token punctuation">;</span>
+	x <span class="token operator">=</span> b<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> x<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code><button class="copy-code-button">Copy</button></pre>
+<p dir="auto">The above code, just initializes x with the value 5 and then returns it, adding the intermediate instructions complicates the disassembly, if not removed by the compiler.</p>
+<h3 data-heading="Packing" dir="auto">Packing</h3>
+<p dir="auto">Packers are a type of software that envelop the program and only release it at runtime. Packers make it impossible for us to disassemble and decompile the program and debugging is also heavily hindered. </p>
+<p dir="auto">The packer encrypts parts or the entirety of the program and is only itself capable of unpacking it. Luckily, unpacking a program is possibly by dumping it. </p>
+<p dir="auto">When running the program, the code is eventually revealed to the processor. During this time-frame we are able to dump the process, and create an executable file that does not contain the packer actively anymore. x64dbg is able to use the <a data-tooltip-position="top" aria-label="https://github.com/NtQuery/Scylla" rel="noopener" class="external-link" href="https://github.com/NtQuery/Scylla" target="_blank">Scylla</a> plugin to perform this operation, but there are many others available online.</p>
+<h3 data-heading="Virtual Machines" dir="auto">Virtual Machines</h3>
+<p dir="auto">Instead of allowing the code to run as is, some developers decide to create their own virtual machines. Virtual machines, or Interpreters, use bytecode as input and parse the custom instructions in their own custom way. We cannot disassembler, nor debug the program, since everything is being passed through the VM. This means that we have to break the VM first in order to gain access to the code and data. </p>
+<p dir="auto">Virtual Machines are used relatively often, but the baseline of complexity makes it a topic not fit to be covered in this document (I don't really understand them either :P).</p>
+<div style="page-break-after: always; visibility: hidden" dir="auto">
+\pagebreak
+</div>
+# Appendix A - Community
+<h2 data-heading="Contact Us" dir="auto">Contact Us</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Name</th>
+<th>Social-Media HyperLinks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="goatpfp.png" src="goatpfp.png" class="internal-embed"></td>
+<td><br>Dimitrios <br>Tsiplakis</td>
+<td><br><a data-tooltip-position="top" aria-label="https://github.com/johnnnathan" rel="noopener" class="external-link" href="https://github.com/johnnnathan" target="_blank">GitHub</a> | <a data-tooltip-position="top" aria-label="https://www.linkedin.com/in/dimitris-tsiplakis-4b0b15359" rel="noopener" class="external-link" href="https://www.linkedin.com/in/dimitris-tsiplakis-4b0b15359" target="_blank">LinkedIn</a> | <a data-tooltip-position="top" aria-label="mailto:johnnnathan@proton.me" rel="noopener" class="external-link" href="mailto:johnnnathan@proton.me" target="_blank">johnnnathan@proton.me</a></td>
+</tr>
+</tbody>
+</table>
+<h2 data-heading="Additional Tangents" dir="auto">Additional Tangents</h2>
+<hr dir="auto">
+<p dir="auto"><strong>Using AI to Reverse Programs</strong></p>
+<p dir="auto">In your reverse engineering journey you will definitely come across a function that you cannot understand, not matter the hours that you spend on it. I myself, and many others, have asked LLMs for help in such cases. LLMs are, in my opinion, detrimental to your development as a reverser, not because LLMs complete the job instead of you, but because they are not assembly models, they are language models. The quality of the responses of the models are based on the quality of the content that the developers used while training it. Pure assembly is amongst the least used programming languages, and so, the possible amount of training data is limited, compared to a language like python. It is highly likely that a model will give you confusing or false results when querying it, so do your best to not depend on them. </p>
+<hr dir="auto">
+<h2 data-heading="Notes" dir="auto">Notes</h2>
+<p dir="auto">When talking about specifics of assembly, and the ISA is not specified assume that it is x86-64. In the first few chapters we specify it, but this is not the case in further chapters.</p>
+<p dir="auto">Most source code snippets will be in written in C. It's what most apps use and the language I like the most, fight me.</p>
+<p dir="auto">Any provided binaries will be ELFs. In the future this might change. Certain referenced programs might also be Linux exclusive.</p>
+<h1 data-heading="Appendix B - Exercises" dir="auto">Appendix B - Exercises</h1>
+<h1 data-heading="Appendix C - Solutions" dir="auto">Appendix C - Solutions</h1>
+    </body>
+</html>

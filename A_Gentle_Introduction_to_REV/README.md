@@ -18,7 +18,7 @@ The REV category of challenges in CTF competitions is usually the most difficult
 With enough effort anything can be understood or get cracked, and some of the most well-known methods will be covered in the following chapters. 
 
 
-
+‎ 
 # Basic Computing Concepts
 
 ## Data and Numerical Bases/Systems
@@ -63,6 +63,10 @@ A collection of 8 bits is called a byte and has a maximum value of 255 (0-255, m
 A half-word is a data type of 16 bits (2 bytes, max 65_535), single words (WORDS) of 32 bits (4 bytes, max 4_294_967_295) and Double Words (DWORDS) 64-bits (8 bytes, max 18_446_744_073_709_551_616). 
 
 These terms are usually used when talking about the architecture of a computer. Older computers used 32-bit registers which meant that the maximum amount of bits that a register could hold was a WORD. The address space is also dependent on the architecture, since a register holds the Instruction Pointer.
+
+
+
+‎ 
 ## Compilation
 
 When source code is written by a programmer (or LLM), the computer is not able to parse the source code in any meaningful way. This is because source code is no different than any other text document to the processor. The process of turning source code into executable code is called compilation but it really consists of multiple steps. 
@@ -128,6 +132,8 @@ Static linking includes the files themselves into the executable. As a result fi
 When reversing programs, static linking causes many problems to us reversers. Golang compilers for example, statically compile programs by default, meaning that analysis and debugging is much slower and much more arduous. 
 
 
+
+‎ 
 ## Computer Memory
 
 Data and a program's code both need to be stored on the system to allow the processor to perform operations. Computers use a multi-layer system of caches and cold memory to improve performance, with the fastest memory type being CPU registers. 
@@ -278,6 +284,16 @@ Heap memory is also a memory structure inside RAM, but it's implementation and u
 ![[Pasted image 20250502181828.png]]
 *Memory Layout of Programs, image from [stackoverflow](https://stackoverflow.com/questions/73420465/how-the-operating-system-manages-the-stack-and-heap-growing-and-shrinking).*
 
+
+### Endianness 
+
+When storing data inside memory there are two ways to order the bytes. 
+
+The most-used type of endianness is little-endian, which stores bytes in "reverse" order, from last to first, in the Least Significant Byte (LSB). This means that if we want to store "AAA" inside a 4-byte register (0x00000000) that the last byte would be occupied first, then the second to last, then the third to last (0x00000041 -> 0x00004141 -> 0x00414141). Little-endian is in some cases faster than big-endian, since addition and subtraction are sped up. 
+
+Big-endian stores data in the same manner that the English language is read, from left to right. The first byte is held in the most-significant index and subsequent ones in the proceeding ones. Fitting "AAA" in a 4-byte big-endian register would be the inverse of the little-endian process (0x41000000 -> 0x41410000 -> 0x41414100),
+
+On Linux you can find out how the program stores the bytes by using the "file" command, with the name of the program as an argument.
 
 ## Source Code
 
@@ -664,13 +680,69 @@ Most mathematical operations that are present in the c language, can also be per
 ![[Pasted image 20250503165102.png]]
 *Some common mathematical operations in x86-64, Image from [Brown University](https://cs.brown.edu/courses/cs033/docs/guides/x64_cheatsheet.pdf).*
 
-## Functions
+### Functions
 
 The basic structure of functions, is quite simple. 
 
 The processor changes the value stored inside the RIP register to the first line of the called function. The return address of the caller function is PUSHed on to the stack and the function is executed. At the end a RET call is made to return the control to the caller function, after POPing the return address from the stack.
 
 We are also able to create child processes and threads that execute functions in parallel with the main and other child processes/threads. This will be covered in future chapters, since parallel processing is quite common in larger applications.
+
+
+## Obfuscation Techniques
+
+Many programmers will try to protect their programs by using certain obfuscation techniques. These range from using special compilation flags, to adding anti-debugging system calls, to creating their own Interpreter that we will have to reverse, before we can the program itself. Deeply understanding each technique and how to bypass it requires more effort than just reading this chapter, but hopefully it will give you a good jump-start.
+
+### String Obfuscation
+
+Using strings to locate important bits of code and sensitive information is a key-aspect of reversing. When stored in plaintext, strings can be immediately found, but if obfuscated it is more difficult to do so, since text can become disguised. 
+
+The simplest, and possibly most used, technique is XOR encryption of strings. At [compile](https://github.com/adamyaxley/Obfuscate)
+or runtime, the strings are passed through an XOR function with a secret key, turning the legible text into a stream of printable and un-printable bytes. This ruins the ability to search for them, which means that we have to spend more time searching. This is not a perfect solution though, since if we can find the encrypted text, decrypting it through brute-force is quite simple, especially when using tools like [CyberChef](https://gchq.github.io/CyberChef/). 
+
+
+### Junk Code 
+
+Junk Code is not a specific implementation, rather the idea of adding useless data and code to your program to confuse the reverser. The best-known technique that falls under the junk code category are [Opaque predicates](https://en.wikipedia.org/wiki/Opaque_predicate), where conditional statements are added to the code, that are not dependent on the state of the program itself, but whose values are rather pre-determined by the programmer.
+
+```asm
+XOR EAX, EAX
+JZ [address]
+```
+
+In the example above, the result of the first operation is always zero, meaning that the jump will always trigger. This has no effect on the behavior of the program, but rather just complicates the logic of it.
+
+Empty, or useless, or unused functions are also a technique that is used by some. This technique requires the developer to also modify the process of compilation of the program, using special flags, since compilers usually remove dead code. 
+
+
+```c
+int returnFive(){
+	int x = 5;
+	int b = x;
+	x = x - b;
+	x = b;
+	return x;
+}
+
+```
+The above code, just initializes x with the value 5 and then returns it, adding the intermediate instructions complicates the disassembly, if not removed by the compiler.
+
+
+### Packing 
+
+Packers are a type of software that envelop the program and only release it at runtime. Packers make it impossible for us to disassemble and decompile the program and debugging is also heavily hindered. 
+
+The packer encrypts parts or the entirety of the program and is only itself capable of unpacking it. Luckily, unpacking a program is possibly by dumping it. 
+
+When running the program, the code is eventually revealed to the processor. During this time-frame we are able to dump the process, and create an executable file that does not contain the packer actively anymore. x64dbg is able to use the [Scylla](https://github.com/NtQuery/Scylla) plugin to perform this operation, but there are many others available online.
+
+
+
+### Virtual Machines
+
+Instead of allowing the code to run as is, some developers decide to create their own virtual machines. Virtual machines, or Interpreters, use bytecode as input and parse the custom instructions in their own custom way. We cannot disassembler, nor debug the program, since everything is being passed through the VM. This means that we have to break the VM first in order to gain access to the code and data. 
+
+Virtual Machines are used relatively often, but the baseline of complexity makes it a topic not fit to be covered in this document (I don't really understand them either :P).
 
 # Appendix A - Community
 
